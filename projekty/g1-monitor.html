@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G1 Monitor – PrecIT</title>
+<meta name="description" content="System zarządzania i archiwizacji danych produkcyjnych. Pełna digitalizacja procesów wydziału szlifierskiego.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1014;--bg2:#16181e;--bg3:#1e2028;--line:#2e3240;--text:#e8eaf0;--muted:#7a8099;--accent:#e8a020;--accent2:#f0b840;--white:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(15,16,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:.04em;color:var(--white);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-back:hover{color:var(--accent);}
+
+.project-hero{padding:120px 5vw 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.2;}
+.hero-glow{position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(232,160,32,.07) 0%,transparent 70%);pointer-events:none;}
+.project-hero-content{position:relative;max-width:800px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--accent);}
+.breadcrumb span{color:var(--accent);}
+.project-tag{display:inline-block;padding:4px 14px;background:rgba(232,160,32,.12);color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.project-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,7vw,5rem);line-height:.95;color:var(--white);margin-bottom:1.2rem;}
+.project-hero-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:2rem;line-height:1.7;}
+.project-meta{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--line);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-size:.7rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.meta-value{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;color:var(--text);}
+.meta-value.accent{color:var(--accent);}
+
+.project-body{max-width:1100px;margin:0 auto;padding:80px 5vw;}
+.content-layout{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start;}
+.content-main{}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:8px;}
+.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;margin-top:3rem;line-height:1.1;}
+h2:first-of-type{margin-top:0;}
+p{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem;line-height:1.75;}
+p strong{color:var(--text);font-weight:500;}
+.highlight-box{background:var(--bg2);border-left:3px solid var(--accent);padding:1.2rem 1.5rem;margin:2rem 0;font-size:.95rem;color:var(--text);line-height:1.7;}
+.features-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin:1.5rem 0;}
+.features-list li{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;color:var(--muted);line-height:1.6;}
+.features-list li::before{content:'▸';color:var(--accent);font-size:.8rem;margin-top:3px;flex-shrink:0;}
+.features-list li strong{color:var(--text);font-weight:500;}
+
+.screenshot-placeholder{background:var(--bg2);border:1px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:3rem;margin:2rem 0;text-align:center;}
+.placeholder-icon{font-size:2.5rem;opacity:.4;}
+.placeholder-text{font-size:.8rem;color:var(--muted);letter-spacing:.08em;}
+.placeholder-large{min-height:300px;}
+.placeholder-small{min-height:180px;}
+
+.screenshots-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+
+.sidebar{position:sticky;top:90px;}
+.sidebar-card{background:var(--bg2);border:1px solid var(--line);padding:2rem;margin-bottom:1.5rem;}
+.sidebar-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;letter-spacing:.02em;}
+.tech-tag{display:inline-block;padding:4px 12px;border:1px solid var(--line);font-size:.75rem;color:var(--muted);letter-spacing:.06em;margin:3px;}
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+.status-demo{background:rgba(232,160,32,.1);color:var(--accent);border:1px solid rgba(232,160,32,.3);}
+.sidebar-fact{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.85rem;}
+.sidebar-fact:last-child{border-bottom:none;}
+.fact-label{color:var(--muted);}
+.fact-value{color:var(--text);font-weight:500;}
+
+.btn-primary{display:inline-block;padding:14px 32px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{display:inline-block;padding:12px 28px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;margin-top:.8rem;display:block;text-align:center;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.8rem;color:var(--muted);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.project-hero-content>*{animation:fadeUp .6s ease forwards;opacity:0;}
+.breadcrumb{animation-delay:.05s;}.project-tag{animation-delay:.15s;}.project-hero h1{animation-delay:.25s;}.project-hero-sub{animation-delay:.35s;}.project-meta{animation-delay:.45s;}
+
+@media(max-width:900px){
+  .content-layout{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .screenshots-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Prec<span>IT</span></a>
+  <a href="../index.html" class="nav-back">← Powrót do strony głównej</a>
+</nav>
+
+<div class="project-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="project-hero-content">
+    <div class="breadcrumb"><a href="../index.html">PrecIT</a> / <a href="../index.html#portfolio">Portfolio</a> / <span>G1 Monitor</span></div>
+    <div class="project-tag">System produkcyjny</div>
+    <h1>System Zarządzania Produkcją</h1>
+    <p class="project-hero-sub">Aplikacja webowa do zarządzania, gromadzenia i archiwizacji danych produkcyjnych. Pełna digitalizacja procesów wydziału — od operatora po kadrę zarządzającą. Projekt pokazowy zbudowany w odpowiedzi na realne braki w codziennym funkcjonowaniu zakładu.</p>
+    <div class="project-meta">
+      <div class="meta-item"><div class="meta-label">Status</div><div class="meta-value accent">Projekt pokazowy</div></div>
+      <div class="meta-item"><div class="meta-label">Typ</div><div class="meta-value">Aplikacja webowa</div></div>
+      <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">React / Node.js / Supabase</div></div>
+      <div class="meta-item"><div class="meta-label">Odbiór</div><div class="meta-value">Duża aprobata operatorów i kadry</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="project-body">
+  <div class="content-layout">
+    <div class="content-main">
+
+      <div class="section-label">Kontekst</div>
+      <h2>Skąd wziął się pomysł</h2>
+      <p>Przez lata pracując na hali produkcyjnej jako operator i mistrz dostrzegałem ten sam problem — <strong>dane produkcyjne żyły na papierze</strong>. Raporty zmianowe zapisywane odręcznie, przepisywane ręcznie do zestawień, trudne do porównania i niemożliwe do analizy w czasie rzeczywistym.</p>
+      <p>Systemy z których korzystały zakłady nie odpowiadały na codzienne pytania operacyjne: ile sztuk wykonano na zmianie? Które stanowisko ma najniższą wydajność? Kiedy skończymy zlecenie? Dane trafiały do systemu z opóźnieniem i przez ograniczony interfejs który nie był dostosowany do rytmu hali.</p>
+      <p>Postanowiłem to zmienić. <strong>System powstał jako odpowiedź na realne problemy</strong> — nie jako projekt "bo tak", ale jako narzędzie które sam chciałem mieć do dyspozycji jako mistrz produkcji.</p>
+
+      <div class="highlight-box">Projekt był prezentowany kadrze zarządzającej i spotkał się z bardzo dużą aprobatą zarówno wśród operatorów jak i mistrzów produkcji. Wdrożenie nie zostało przeprowadzone ze względów organizacyjnych — nie technicznych. System działał w środowisku testowym bez zarzutu.</div>
+
+      <h2>Co robi system</h2>
+      <p>To aplikacja webowa — działa w przeglądarce, bez instalacji, na dowolnym komputerze w sieci zakładu. Obejmuje cały cykl zarządzania danymi produkcyjnymi — od wprowadzenia planu, przez rejestrację wykonania przez operatora, po archiwizację i raportowanie dla kierownictwa.</p>
+
+      <ul class="features-list">
+        <li><strong>Planowanie produkcji</strong> — tworzenie i zarządzanie planami dla poszczególnych stanowisk. Przypisywanie zleceń, ilości i terminów.</li>
+        <li><strong>Rejestracja w czasie rzeczywistym</strong> — operator loguje wykonanie bezpośrednio w systemie. Każde wykonanie z datą, ilością i komentarzem. Zero papierowych kart.</li>
+        <li><strong>Monitoring stanowisk</strong> — podgląd aktualnego stanu każdego stanowiska produkcyjnego na żywo. Który plan jest w realizacji, ile zostało, kiedy koniec.</li>
+        <li><strong>Raportowanie</strong> — automatyczne raporty zmianowe i dobowe gotowe dla mistrzów i kierowników — bez ręcznego zestawiania danych.</li>
+        <li><strong>Archiwizacja</strong> — pełna historia produkcji zachowana w bazie danych. Możliwość analizy wydajności, porównania zmian, identyfikacji problemów i trendów.</li>
+        <li><strong>KPI dla kierownictwa</strong> — kluczowe wskaźniki efektywności dostępne w czasie rzeczywistym. Dane które pozwalają podejmować decyzje w oparciu o fakty, nie o papierowe zestawienia.</li>
+        <li><strong>Przyjazny interfejs</strong> — zaprojektowany z myślą o operatorach przy maszynie. Duże przyciski, czytelny układ, minimum kliknięć do rejestracji.</li>
+      </ul>
+
+      <h2>Zrzuty ekranu</h2>
+      <p>Screeny pokazują rzeczywisty interfejs systemu działającego w środowisku testowym.</p>
+
+      <div class="screenshot-placeholder placeholder-large">
+        <div class="placeholder-icon">🖥️</div>
+        <div class="placeholder-text">DASHBOARD GŁÓWNY — WIDOK MISTRZÓW<br>zrzut ekranu wkrótce</div>
+      </div>
+
+      <div class="screenshots-grid">
+        <div class="screenshot-placeholder placeholder-small">
+          <div class="placeholder-icon">📋</div>
+          <div class="placeholder-text">PLAN PRODUKCJI<br>zrzut ekranu wkrótce</div>
+        </div>
+        <div class="screenshot-placeholder placeholder-small">
+          <div class="placeholder-icon">⚙️</div>
+          <div class="placeholder-text">REJESTRACJA OPERATORA<br>zrzut ekranu wkrótce</div>
+        </div>
+        <div class="screenshot-placeholder placeholder-small">
+          <div class="placeholder-icon">📊</div>
+          <div class="placeholder-text">RAPORT ZMIANOWY<br>zrzut ekranu wkrótce</div>
+        </div>
+        <div class="screenshot-placeholder placeholder-small">
+          <div class="placeholder-icon">🔍</div>
+          <div class="placeholder-text">ARCHIWUM / HISTORIA<br>zrzut ekranu wkrótce</div>
+        </div>
+      </div>
+
+      <h2>Co ten projekt pokazuje</h2>
+      <p>Ten system to dowód na to, że <strong>digitalizacja procesów produkcyjnych nie wymaga wielomilionowego budżetu</strong> ani półrocznego procesu przetargowego. Aplikacja webowa od koncepcji do działającego prototypu — zbudowana przez jedną osobę która rozumie produkcję od środka.</p>
+      <p>Kluczowa różnica w stosunku do gotowych rozwiązań rynkowych: <strong>system został zaprojektowany przez kogoś kto sam stał przy maszynie</strong>. Interfejs operatora, logika raportowania, struktura planu — wszystko odzwierciedla realne potrzeby hali, a nie wyobrażenie o nich. Kadra zarządzająca dostaje KPI których naprawdę potrzebuje do podejmowania decyzji.</p>
+      <p>Ten projekt jest punktem wyjścia. Każdy zakład ma swoje specyficzne procesy — dlatego zawsze zaczynam od poznania Twojej firmy, zanim powstanie pierwsza linia kodu.</p>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <h3>Status projektu</h3>
+        <div class="status-badge status-demo">Projekt pokazowy</div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:1rem;line-height:1.6;">Projekt powstał jako proof of concept dla środowiska przemysłowego. Działał w środowisku testowym, spotkał się z aprobatą użytkowników. Gotowy do adaptacji dla nowego klienta.</p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Technologia</h3>
+        <div>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">RLS</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Szczegóły</h3>
+        <div class="sidebar-fact"><span class="fact-label">Branża</span><span class="fact-value">Produkcja przemysłowa</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Użytkownicy</span><span class="fact-value">Operatorzy, Mistrzowie</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Architektura</span><span class="fact-value">Web / przeglądarki</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Baza danych</span><span class="fact-value">PostgreSQL (Supabase)</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Bezpieczeństwo</span><span class="fact-value">RLS, role użytkowników</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Podobny projekt dla Twojej firmy?</h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.6;">Każdy zakład jest inny. Zanim zaproponuję rozwiązanie — spędzam czas na Twojej hali i poznam Twoje procesy.</p>
+        <a href="../index.html#contact" class="btn-primary">Porozmawiajmy</a>
+        <a href="../index.html#pricing" class="btn-outline">Zobacz modele wyceny</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">Prec<span>IT</span></a>
+  <p class="footer-copy">© 2026 PrecIT. Precision IT. Production Roots.</p>
+</footer>
+
+</body>
+</html>
