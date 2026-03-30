@@ -175,8 +175,8 @@ footer .logo{font-size:1.1rem;}
     <li><a href="#contact" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
   </ul>
   <div class="lang-switch">
-    <button class="lang-btn active" onclick="setLang('pl')">PL</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" data-lang="pl" onclick="setLang('pl')">PL</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
   </div>
 </nav>
 
@@ -482,7 +482,7 @@ let currentLang='pl';
 function setLang(lang){
   currentLang=lang;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
   document.documentElement.lang=lang;
   document.querySelectorAll('[data-pl]').forEach(el=>{
     const text=el.getAttribute(`data-${lang}`);
