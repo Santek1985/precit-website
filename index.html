@@ -175,8 +175,8 @@ footer .logo{font-size:1.1rem;}
     <li><a href="#contact" data-pl="Kontakt" data-en="Contact">Kontakt</a></li>
   </ul>
   <div class="lang-switch">
-    <button class="lang-btn active" data-lang="pl" onclick="setLang('pl')">PL</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" data-lang="pl">PL</button>
+    <button class="lang-btn" data-lang="en">EN</button>
   </div>
 </nav>
 
@@ -478,31 +478,41 @@ footer .logo{font-size:1.1rem;}
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let currentLang='pl';
-function setLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-  document.documentElement.lang=lang;
-  document.querySelectorAll('[data-pl]').forEach(el=>{
-    const text=el.getAttribute(`data-${lang}`);
-    if(!text)return;
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=text;}
-    else if(text.includes('<')){el.innerHTML=text;}
-    else{el.textContent=text;}
+document.addEventListener('DOMContentLoaded',function(){
+  let currentLang='pl';
+  function setLang(lang){
+    currentLang=lang;
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.lang-btn[data-lang="'+lang+'"]').classList.add('active');
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-pl]').forEach(function(el){
+      var text=el.getAttribute('data-'+lang);
+      if(!text)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=text;}
+      else if(text.indexOf('<')>=0){el.innerHTML=text;}
+      else{el.textContent=text;}
+    });
+    document.querySelectorAll('select option[data-pl]').forEach(function(o){o.textContent=o.getAttribute('data-'+lang)||o.textContent;});
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){setLang(this.getAttribute('data-lang'));});
   });
-  document.querySelectorAll('select option[data-pl]').forEach(o=>{o.textContent=o.getAttribute(`data-${lang}`)||o.textContent;});
-}
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t=document.querySelector(a.getAttribute('href'));
+      if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  var form=document.querySelector('.contact-form');
+  if(form){form.addEventListener('submit',function(e){
     e.preventDefault();
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    var btn=e.target.querySelector('button[type="submit"]');
+    btn.textContent=currentLang==='pl'?'Wysłano ✓':'Sent ✓';
+    btn.style.background='#2a9d5c';
+    setTimeout(function(){btn.textContent=currentLang==='pl'?'Wyślij wiadomość':'Send message';btn.style.background='';e.target.reset();},3000);
+  });}
+  window.addEventListener('scroll',function(){
+    document.querySelector('nav').style.borderBottomColor=window.scrollY>50?'rgba(232,160,32,.2)':'var(--line)';
   });
 });
-function handleSubmit(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button[type="submit"]');
-  btn.textContent=currentLang==='pl'?'Wysłano ✓':'Sent ✓';
-  btn.style.background='#2a9d5c';
-  setTimeout(()=>{btn.textContent=currentLang==='pl'?'Wyślij wiadomość':'Send message';btn.
