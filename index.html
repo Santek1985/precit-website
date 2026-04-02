@@ -90,20 +90,20 @@ section{padding:90px 5vw;}
 .killer-intro{font-size:1.05rem;color:var(--muted);max-width:700px;margin-bottom:3rem;line-height:1.75;}
 .killer-intro strong{color:var(--text);}
 .killer-showcase{display:flex;flex-direction:column;gap:2px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem;}
-.killer-row{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);}
+.killer-row{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:320px;}
 .killer-row-reverse{direction:rtl;}
 .killer-row-reverse>*{direction:ltr;}
 .killer-text-col{display:flex;flex-direction:column;gap:2px;background:var(--line);}
-.killer-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .2s;}
+.killer-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .2s;flex:1;}
 .killer-item:hover{background:var(--bg3);}
 .killer-before{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
 .killer-problem{font-size:.92rem;color:var(--text);margin-bottom:.7rem;line-height:1.55;}
 .killer-arrow{font-size:.85rem;color:var(--accent);margin-bottom:.5rem;font-weight:700;}
 .killer-solution{font-size:.88rem;color:var(--green);font-weight:500;line-height:1.55;}
-.killer-img-col{overflow:hidden;position:relative;}
-.killer-screen-wrap{height:100%;display:flex;flex-direction:column;}
+.killer-img-col{overflow:hidden;position:relative;min-height:320px;}
+.killer-screen-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
 .killer-screen-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--line);flex-shrink:0;}
-.killer-screen-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(.88) contrast(1.05);flex:1;}
+.killer-screen-wrap img{width:100%;flex:1;object-fit:cover;object-position:top center;display:block;filter:brightness(.88) contrast(1.05);}
 .prob-text strong{color:var(--text);}
 .prob-text em{color:var(--accent);font-style:normal;}
 .problems-right h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;line-height:1.2;}
@@ -821,7 +821,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       </div>
       <div class="contact-detail">
         <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <span><a href="mailto:kontakt@precit.pl">kontakt@precit.pl</a></span>
+        <span><a href="/cdn-cgi/l/email-protection#8be0e4e5ffeae0ffcbfbf9eee8e2ffa5fbe7"><span class="__cf_email__" data-cfemail="8fe4e0e1fbeee4fbcffffdeaece6fba1ffe3">[email&#160;protected]</span></a></span>
       </div>
       <div class="contact-detail">
         <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -852,4 +852,22 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       </div>
       <div class="form-group">
         <label>Co Cię boli? Opisz problem</label>
-        <textarea name="message" placeholder="Co nie działa? Co zajmuje za dużo czasu? Co sprawia że tracisz kontrolę? Nie musisz wiedzieć czego chcesz — wystarczy że wiesz co Cię irytuje." required></t
+        <textarea name="message" placeholder="Co nie działa? Co zajmuje za dużo czasu? Co sprawia że tracisz kontrolę nad procesem? Nie musisz wiedzieć czego chcesz — wystarczy że wiesz co Cię irytuje." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Wyślij — odpiszę w 24h</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo">Prec<span>IT</span></a>
+  <p class="footer-copy">© 2026 PrecIT · Daniel Gołąbek · Kielce, Polska · Precision IT. Production Roots.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.querySelector('#nav').style.borderBottomColor=window.scrollY>50?'rgba(232,160,32,.25)':'var(--line)';
+});
+</script>
+</body>
+</html>
