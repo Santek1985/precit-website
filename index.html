@@ -90,20 +90,20 @@ section{padding:90px 5vw;}
 .killer-intro{font-size:1.05rem;color:var(--muted);max-width:700px;margin-bottom:3rem;line-height:1.75;}
 .killer-intro strong{color:var(--text);}
 .killer-showcase{display:flex;flex-direction:column;gap:2px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem;}
-.killer-row{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:320px;}
+.killer-row{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);align-items:start;}
 .killer-row-reverse{direction:rtl;}
 .killer-row-reverse>*{direction:ltr;}
 .killer-text-col{display:flex;flex-direction:column;gap:2px;background:var(--line);}
-.killer-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .2s;flex:1;}
+.killer-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .2s;}
 .killer-item:hover{background:var(--bg3);}
 .killer-before{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
 .killer-problem{font-size:.92rem;color:var(--text);margin-bottom:.7rem;line-height:1.55;}
 .killer-arrow{font-size:.85rem;color:var(--accent);margin-bottom:.5rem;font-weight:700;}
 .killer-solution{font-size:.88rem;color:var(--green);font-weight:500;line-height:1.55;}
-.killer-img-col{overflow:hidden;position:relative;min-height:320px;}
-.killer-screen-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
+.killer-img-col{background:var(--bg3);display:flex;flex-direction:column;}
 .killer-screen-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--line);flex-shrink:0;}
-.killer-screen-wrap img{width:100%;flex:1;object-fit:cover;object-position:top center;display:block;filter:brightness(.88) contrast(1.05);}
+.killer-screen-wrap{display:flex;flex-direction:column;}
+.killer-screen-wrap img{width:100%;height:auto;display:block;filter:brightness(.92) contrast(1.05);}
 .prob-text strong{color:var(--text);}
 .prob-text em{color:var(--accent);font-style:normal;}
 .problems-right h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;line-height:1.2;}
@@ -290,7 +290,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 <body>
 
 <nav id="nav">
-  <a href="#" class="logo">Prec<span>IT</span></a>
+  <a href="#" class="logo"><svg height="32" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" style="display:block;"><rect x="0" y="2" width="16" height="28" rx="2" fill="#1e2028" stroke="#e8a020" stroke-width="1.2"/><rect x="7" y="7" width="2.5" height="18" rx="0" fill="#e8a020"/><rect x="3" y="7" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.5"/><rect x="3" y="13" width="3" height="3.5" rx="0.5" fill="#e8a020"/><rect x="3" y="19" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.3"/><text x="22" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8eaf0">PREC</text><text x="74" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8a020">IT</text></svg></a>
   <ul class="nav-links">
     <li><a href="#problems">Problem</a></li>
     <li><a href="#killer">Dlaczego działa</a></li>
@@ -860,7 +860,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 </section>
 
 <footer>
-  <a href="#" class="logo">Prec<span>IT</span></a>
+  <a href="#" class="logo"><svg height="32" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" style="display:block;"><rect x="0" y="2" width="16" height="28" rx="2" fill="#1e2028" stroke="#e8a020" stroke-width="1.2"/><rect x="7" y="7" width="2.5" height="18" rx="0" fill="#e8a020"/><rect x="3" y="7" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.5"/><rect x="3" y="13" width="3" height="3.5" rx="0.5" fill="#e8a020"/><rect x="3" y="19" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.3"/><text x="22" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8eaf0">PREC</text><text x="74" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8a020">IT</text></svg></a>
   <p class="footer-copy">© 2026 PrecIT · Daniel Gołąbek · Kielce, Polska · Precision IT. Production Roots.</p>
 </footer>
 
