@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor System – System Zarządzania Produkcją · PrecIT</title>
+<meta name="description" content="Aplikacja webowa do zarządzania i egzekwowania procesu produkcyjnego. KPI w czasie rzeczywistym, terminal operatora, obowiązkowa bramka jakości z integracją CMM. Projekt pokazowy zbudowany na realnych problemach z hali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1014;--bg2:#16181e;--bg3:#1e2028;--line:#2e3240;--text:#e8eaf0;--muted:#7a8099;--accent:#e8a020;--accent2:#f0b840;--white:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(15,16,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:.04em;color:var(--white);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-back:hover{color:var(--accent);}
+.project-hero{padding:120px 5vw 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.2;}
+.hero-glow{position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(232,160,32,.07) 0%,transparent 70%);pointer-events:none;}
+.project-hero-content{position:relative;max-width:800px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--accent);}
+.breadcrumb span{color:var(--accent);}
+.project-tag{display:inline-block;padding:4px 14px;background:rgba(232,160,32,.12);color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;}
+.project-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,7vw,5rem);line-height:.95;color:var(--white);margin-bottom:1.2rem;}
+.project-hero-sub{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:2rem;line-height:1.7;}
+.project-meta{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--line);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-size:.7rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.meta-value{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;color:var(--text);}
+.meta-value.accent{color:var(--accent);}
+.project-body{max-width:1100px;margin:0 auto;padding:80px 5vw;}
+.content-layout{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start;}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:8px;}
+.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;margin-top:3rem;line-height:1.1;}
+h2:first-of-type{margin-top:0;}
+p{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem;line-height:1.75;}
+p strong{color:var(--text);font-weight:500;}
+.highlight-box{background:var(--bg2);border-left:3px solid var(--accent);padding:1.2rem 1.5rem;margin:2rem 0;font-size:.95rem;color:var(--text);line-height:1.7;}
+.features-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin:1.5rem 0;}
+.features-list li{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;color:var(--muted);line-height:1.6;}
+.features-list li::before{content:'▸';color:var(--accent);font-size:.8rem;margin-top:3px;flex-shrink:0;}
+.features-list li strong{color:var(--text);font-weight:500;}
+.screenshot-frame{background:var(--bg2);border:1px solid var(--line);margin:2rem 0;overflow:hidden;}
+.screenshot-frame.hero-screen{margin:2.5rem 0;}
+.screen-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--line);}
+.screenshot-frame img{width:100%;display:block;filter:brightness(.93) contrast(1.04);}
+.screen-caption{font-size:.75rem;color:var(--muted);padding:.6rem 1.2rem;background:var(--bg3);border-top:1px solid var(--line);letter-spacing:.04em;line-height:1.5;}
+.screenshots-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.sidebar-card{background:var(--bg2);border:1px solid var(--line);padding:2rem;margin-bottom:1.5rem;}
+.sidebar-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;}
+.tech-tag{display:inline-block;padding:4px 12px;border:1px solid var(--line);font-size:.75rem;color:var(--muted);letter-spacing:.06em;margin:3px;}
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+.status-demo{background:rgba(232,160,32,.1);color:var(--accent);border:1px solid rgba(232,160,32,.3);}
+.sidebar-fact{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.85rem;}
+.sidebar-fact:last-child{border-bottom:none;}
+.fact-label{color:var(--muted);}
+.fact-value{color:var(--text);font-weight:500;text-align:right;}
+.btn-primary{display:inline-block;padding:14px 32px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{display:block;padding:12px 28px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;margin-top:.8rem;text-align:center;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.8rem;color:var(--muted);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.project-hero-content>*{animation:fadeUp .6s ease forwards;opacity:0;}
+.breadcrumb{animation-delay:.05s;}.project-tag{animation-delay:.15s;}.project-hero h1{animation-delay:.25s;}.project-hero-sub{animation-delay:.35s;}.project-meta{animation-delay:.45s;}
+@media(max-width:900px){.content-layout{grid-template-columns:1fr;}.screenshots-2col{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Prec<span>IT</span></a>
+  <a href="/en/projekty/monitor-system.html" class="nav-back">← English version</a>
+</nav>
+
+<div class="project-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="project-hero-content">
+    <div class="breadcrumb"><a href="/">PrecIT</a> / <a href="/#portfolio">Portfolio</a> / <span>Monitor System</span></div>
+    <div class="project-tag">System zarządzania produkcją</div>
+    <h1>Monitor System</h1>
+    <p class="project-hero-sub">Aplikacja webowa do zarządzania, zbierania i egzekwowania danych produkcyjnych. Pełna cyfryzacja procesów wydziału — od operatora przy maszynie po pulpit zarządczy. Projekt pokazowy zbudowany bezpośrednio na realnych problemach, z którymi mierzyłem się codziennie jako mistrz produkcji.</p>
+    <div class="project-meta">
+      <div class="meta-item"><div class="meta-label">Status</div><div class="meta-value accent">Projekt pokazowy</div></div>
+      <div class="meta-item"><div class="meta-label">Typ</div><div class="meta-value">Aplikacja webowa</div></div>
+      <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">React / Node.js / Supabase</div></div>
+      <div class="meta-item"><div class="meta-label">Użytkownicy</div><div class="meta-value">Operatorzy · Mistrzowie · Zarząd</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="project-body">
+  <div class="content-layout">
+    <div class="main-content">
+
+      <div class="section-label">Skąd to się wzięło</div>
+      <h2>Problem istniał na długo przed pierwszą linią kodu</h2>
+      <p>Systemy dostępne w zakładach nie odpowiadały na podstawowe pytania operacyjne: ile jednostek faktycznie wyprodukowano na tej zmianie? Które stanowisko stoi już od 40 minut i dlaczego? Czy to zlecenie zdąży przed końcem zmiany? Dane trafiały do systemu z opóźnieniem — wpisywane na koniec zmiany, podsumowywane na kartce, przenoszone do arkusza. Zanim dotarły do kierownika, były już historią.</p>
+      <p>Ale głębszy problem nie leżał w opóźnieniu. Leżał w tym, że <strong>system pozwalał omijać procedury</strong>. Operator mógł zamknąć zmianę bez wpisania wyników pomiarów. Kontrola jakości, która powinna odbywać się co 2 000 sztuk, odbywała się wtedy, gdy ktoś pamiętał. Problem który wyszedł u klienta zaczął się trzy zmiany wcześniej — i nikt nie miał o tym żadnego zapisu.</p>
+      <p>Postanowiłem to zmienić. <strong>Monitor System powstał jako odpowiedź na realne problemy</strong> — nie jako projekt portfolio, ale jako narzędzie, którego sam potrzebowałem prowadząc wydział produkcyjny.</p>
+
+      <div class="highlight-box">System został zaprezentowany kierownictwu i spotkał się z bardzo silną aprobatą zarówno ze strony operatorów, jak i mistrzów produkcji. Nie został wdrożony z przyczyn organizacyjnych — nie technicznych. W środowisku testowym działał bezbłędnie.</div>
+
+      <div class="section-label">Możliwości systemu</div>
+      <h2>Co system robi</h2>
+      <p>Monitor System to aplikacja webowa działająca w przeglądarce — bez instalacji, na każdym urządzeniu podłączonym do sieci zakładu. Obejmuje pełny cykl zarządzania produkcją — od planowania zmian i monitorowania hali na żywo po egzekwowanie jakości i raportowanie dla zarządu.</p>
+
+      <ul class="features-list">
+        <li><strong>Planowanie produkcji</strong> — plany zmianowe dla każdego stanowiska z numerami zleceń, typami produktów, ilościami i celami. Planista ustala co ma się wydarzyć; system śledzi czy to nastąpiło.</li>
+        <li><strong>Terminal Operatora</strong> — dedykowany interfejs przy maszynie. Operator widzi aktywną pozycję planu, licznik na żywo, status planu zmianowego i trzy działania: zakończ pozycję, dokonaj pomiaru, zgłoś problem. Żadnych kartek. Żadnego wpisywania danych na koniec zmiany. Wszystko rejestrowane w czasie rzeczywistym.</li>
+        <li><strong>Panel Mistrza na żywo</strong> — KPI w czasie rzeczywistym dla całego wydziału: wykonanie vs. plan, OEE, przestoje, dostępność — per stanowisko, per zmiana. Mistrz widzi co dzieje się teraz, nie co wydarzyło się wczoraj.</li>
+        <li><strong>Tryb TV</strong> — jedno kliknięcie z panelu mistrza uruchamia pełnoekranowy kiosk na monitory halowe. Pięć kafli linii produkcyjnych z aktualnymi danymi, automatyczna rotacja co 30 sekund. Każda osoba na hali widzi bieżący stan produkcji bez pytania.</li>
+        <li><strong>Bramka Jakości — wymuszony pomiar</strong> — gdy zostanie osiągnięty zdefiniowany interwał (np. co 2 000 sztuk), produkcja jest automatycznie wstrzymana. Operator musi przeprowadzić pełny cykl pomiarowy przy użyciu podłączonego urządzenia CMM. Dane pomiarowe pochodzą z przyrządu — nie z głowy operatora. Wynik poza tolerancją powoduje natychmiastową eskalację do Lidera Zmiany — z imieniem, nazwiskiem i numerem wewnętrznym widocznym na ekranie. Maszyna nie zatrzymuje się — sztuki niezgodne są oddzielane automatycznie. Ale kolejna seria nie może się rozpocząć bez podjętej decyzji. <strong>Ten krok nie może zostać pominięty.</strong></li>
+        <li><strong>Dziennik zdarzeń produkcyjnych</strong> — każde zdarzenie przestojowe jest rejestrowane z typem, czasem trwania, stanowiskiem i osobą zgłaszającą. Przezbrojenia, wymiany narzędzi, awarie, kalibracje — wszystko ze znacznikiem czasu i przypisaniem. Mistrz ma pełny obraz przy przekazaniu zmiany.</li>
+        <li><strong>Grafik zmian</strong> — kolorowy miesięczny grafik dla wszystkich pracowników. Konfigurowalne godziny rozpoczęcia zmian per grupa pracownicza: operatorzy mogą zaczynać o 6:30, liderzy o 6:00 — system obsługuje oba warianty niezależnie. Wszystkie moduły automatycznie czytają właściwe granice zmiany.</li>
+        <li><strong>Raportowanie i archiwizacja</strong> — automatyczne raporty zmianowe, podsumowania dzienne i wykresy miesięczne. Pełna historia produkcji dostępna do analizy. Eksport do Excela. Poranny raport dla kierownictwa generuje się sam.</li>
+      </ul>
+
+      <div class="section-label">Kluczowa różnica</div>
+      <h2>To nie jest sztywne, pudełkowe rozwiązanie</h2>
+      <p>Standardowe systemy MES kosztują setki tysięcy złotych, wdrażają się 12–18 miesięcy i dostarczane są ze stałą strukturą, do której zakład musi się następnie dostosować. Każda modyfikacja to projekt, harmonogram i faktura. Efektem jest system który technicznie działa — ale który operatorzy omijają, bo nigdy nie był zaprojektowany z myślą o realiach ich zmiany.</p>
+      <p>Monitor System działa inaczej. <strong>Każdy element — od struktury wydziałów i stanowisk, godzin zmian i ról użytkowników, przez harmonogramy pomiarów jakości i ścieżki eskalacji, po wygląd interfejsu — jest konfigurowany pod konkretny zakład.</strong> System dopasowuje się do firmy, nie firma do systemu.</p>
+      <p>To nie jest produkt który instalujesz i akceptujesz. To system zbudowany wokół twojego rzeczywistego procesu — po tym jak spędzę czas na twojej hali rozumiejąc jak naprawdę płynie praca, gdzie są luki i czego operator faktycznie potrzebuje przy maszynie o 3 w nocy na trzeciej zmianie.</p>
+
+      <div class="section-label">Screeny</div>
+      <h2>System w środowisku demo</h2>
+      <p>Wszystkie ekrany poniżej pochodzą z działającego demo. Zalogowani: Wiśniewski Marek (Mistrz) i Wójcik Paweł (Operator, Zmiana II).</p>
+      <p style="font-size:.82rem;color:var(--muted);opacity:.7;margin-bottom:2rem;">Monitor System to nazwa demonstracyjna. W praktyce system powstaje pod zakład — nie zakład pod system.</p>
+
+      <div class="screenshot-frame hero-screen">
+        <div class="screen-label">Panel Mistrza — Produkcja na żywo · Wydział 1</div>
+        <img src="/images/ms-foreman-pl.png" alt="Monitor System — Panel Mistrza z KPI w czasie rzeczywistym, tabelą stanowisk i zdarzeniami produkcyjnymi" loading="lazy">
+        <div class="screen-caption">147 096 sztuk wyprodukowanych · 6/11 pozycji planu wykonanych · 78 min łącznie przestojów · 94,6% śr. dostępność. Tabela stanowisk z planem, wykonaniem, celem dziennym, realizacją i przestojami. Sekcja zdarzeń produkcyjnych poniżej — każde zdarzenie z typem, czasem i osobą zgłaszającą.</div>
+      </div>
+
+      <div class="screenshots-2col">
+        <div class="screenshot-frame">
+          <div class="screen-label">Tryb TV — Kiosk halowy</div>
+          <img src="/images/ms-tv-pl.png" alt="Monitor System Tryb TV — pełnoekranowy kiosk z 5 kaflami linii produkcyjnych" loading="lazy">
+          <div class="screen-caption">Pełnoekranowy kiosk na monitory halowe. Wykonanie na żywo, realizacja %, OEE i przestój per linia. Automatyczna rotacja co 30 s. Jedno kliknięcie z panelu mistrza.</div>
+        </div>
+        <div class="screenshot-frame">
+          <div class="screen-label">Terminal Operatora — Aktywna pozycja planu</div>
+          <img src="/images/ot-main-pl.png" alt="Terminal Operatora — 847 szt. wyprodukowanych, plan zmianowy w panelu bocznym, trzy przyciski akcji" loading="lazy">
+          <div class="screen-caption">Widok przy maszynie: PRD-01 / Wariant 4 · 847 z 8 000 szt. Status planu zmianowego w panelu bocznym. Trzy akcje: Zakończ pozycję · Dokonaj pomiaru · Zgłoś problem.</div>
+        </div>
+      </div>
+
+      <div class="screenshot-frame hero-screen">
+        <div class="screen-label">Bramka Jakości — Obowiązkowa kontrola · Produkcja wstrzymana</div>
+        <img src="/images/qg-gate-pl.png" alt="Bramka Jakości — ekran obowiązkowego wstrzymania z panelem informacji systemowej po prawej" loading="lazy">
+        <div class="screen-caption">Wyzwalana automatycznie co 2 000 szt. Produkcja wstrzymana — operator nie może wznawiać bez certyfikowanego wyniku pomiarowego. Prawy panel precyzuje: wymuszone niezależne wprowadzanie danych · odchyłka wymaga potwierdzenia Lidera Zmiany / KJ · maszyna nie zatrzymuje się, sztuki niezgodne oddzielane automatycznie.</div>
+      </div>
+
+      <div class="screenshots-2col">
+        <div class="screenshot-frame">
+          <div class="screen-label">Bramka Jakości — Wynik: Niezgodny</div>
+          <img src="/images/qg-fail-pl.png" alt="Bramka Jakości wynik niezgodny — czerwony ekran z panelem eskalacji do Lidera Zmiany i zapisem jakościowym" loading="lazy">
+          <div class="screen-caption">Chropowatość Ra poza tolerancją. Natychmiastowa eskalacja do Lidera Zmiany: Wiśniewski Marek · wew. 204. Zapis jakościowy: ~2 000 sztuk zagrożonych · partia MS-2026-04-007 · oczekuje na potwierdzenie. Automatyczne oddzielanie aktywne na linii.</div>
+        </div>
+        <div class="screenshot-frame">
+          <div class="screen-label">Grafik — Siatka zmian pracowników</div>
+          <img src="/images/ms-schedule-pl.png" alt="Monitor System Grafik — kolorowy miesięczny grafik zmian dla wszystkich pracowników" loading="lazy">
+          <div class="screen-caption">Miesięczny grafik zmian kodowany kolorami (Zmiana I · II · III), urlop, szkolenie BHP, badania okresowe i urlop bezpłatny. Konfigurowalne godziny zmian per grupa pracownicza. Narzędzie do malowania dla szybkiej edycji zbiorczej.</div>
+        </div>
+      </div>
+
+      <div class="section-label">Co to udowadnia</div>
+      <h2>Co pokazuje ten projekt</h2>
+      <p>Monitor System jest dowodem na to, że <strong>cyfryzacja wydziału produkcyjnego nie wymaga wdrożenia ERP za kilkaset tysięcy złotych</strong> ani osiemnastomiesięcznego rollout z zespołem konsultantów. Działający system — od rejestracji operatora po KPI dla zarządu — od koncepcji do działającego prototypu, zbudowany przez jedną osobę rozumiejącą halę produkcyjną od środka.</p>
+      <p>Kluczowa różnica w stosunku do czegokolwiek dostępnego z półki: <strong>ten system zaprojektowała osoba, która osobiście znała każde obejście które teraz zamknął</strong>. Wiem co operator robi gdy formularz pomiarowy jest opcjonalny. Wiem jak mistrzowie "poprawiają" dane na koniec zmiany. Wiem które raporty kierownictwo faktycznie czyta, a które trafiają prosto do kosza. Monitor System powstał wokół tej wiedzy — nie wokół listy funkcji z broszury produktowej.</p>
+      <p>Każdy zakład jest inny. Ten projekt jest punktem wyjścia — demonstracją tego co jest możliwe gdy system produkcyjny buduje się od środka na zewnątrz. Każde wdrożenie zaczyna się od czasu spędzonego na twojej hali, zanim zostanie zapisane pierwsze wymaganie.</p>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <h3>Status projektu</h3>
+        <div class="status-badge status-demo">Projekt pokazowy</div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:1rem;line-height:1.6;">Zbudowany i przetestowany w realnym środowisku produkcyjnym. Silna aprobata ze strony operatorów, mistrzów i kierownictwa. Nie wdrożony z przyczyn organizacyjnych — nie technicznych. Gotowy do adaptacji dla nowego kontekstu.</p>
+      </div>
+      <div class="sidebar-card">
+        <h3>Technologia</h3>
+        <div>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">RLS</span>
+          <span class="tech-tag">WebSocket</span>
+          <span class="tech-tag">CMM serial</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:1rem;line-height:1.5;">Otwarte standardy — każdy senior developer może to przejąć bez problemów. Integracja CMM przez serial/USB (protokół SPC-II, konfigurowalny per urządzenie).</p>
+      </div>
+      <div class="sidebar-card">
+        <h3>Szczegóły</h3>
+        <div class="sidebar-fact"><span class="fact-label">Branża</span><span class="fact-value">Produkcja</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Użytkownicy</span><span class="fact-value">Operatorzy, Mistrzowie, Planista, Zarząd</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Architektura</span><span class="fact-value">Web · przeglądarkowa</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Baza danych</span><span class="fact-value">PostgreSQL (Supabase)</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Bezpieczeństwo</span><span class="fact-value">RLS · PIN · dostęp rolowy</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Integracja KJ</span><span class="fact-value">Mitutoyo CMM-V2 (demo)</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Język interfejsu</span><span class="fact-value">PL / EN (przełącznik live)</span></div>
+      </div>
+      <div class="sidebar-card">
+        <h3>Ten system dla twojego zakładu?</h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.6;">Każdy zakład ma inne procesy, rytmy i wymagania. Zawsze zaczynam od czasu spędzonego na twojej hali przed napisaniem pierwszej linii kodu. Pierwsza rozmowa jest bezpłatna — bez zobowiązań.</p>
+        <a href="/#contact" class="btn-primary">Porozmawiajmy</a>
+        <a href="/#pricing" class="btn-outline">Modele współpracy</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="logo">Prec<span>IT</span></a>
+  <p class="footer-copy">© 2026 PrecIT · Daniel Gołąbek · Precision IT. Production Roots.</p>
+</footer>
+</body>
+</html>
