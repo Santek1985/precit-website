@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrecIT – Daniel Gołąbek | IT Systems for Manufacturing</title>
+<meta name="description" content="Systems that enforce the production process — not just record it. ERP sees reports. This system sees the shop floor. Daniel Gołąbek, PrecIT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1014;--bg2:#16181e;--bg3:#1e2028;--line:#2e3240;--text:#e8eaf0;--muted:#7a8099;--accent:#e8a020;--accent2:#f0b840;--white:#fff;--red:#c0392b;--green:#2a9d5c;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(15,16,20,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:border-color .3s;}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:.04em;color:var(--white);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+.lang-switch{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.lang-btn{display:inline-block;padding:6px 12px;font-size:.75rem;font-weight:600;letter-spacing:.08em;color:var(--muted);font-family:'Barlow Condensed',sans-serif;text-decoration:none;transition:all .2s;}
+.lang-btn.active{background:var(--accent);color:var(--bg);}
+.lang-btn:hover:not(.active){color:var(--text);}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5vw 60px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.2;}
+.hero-glow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(232,160,32,.08) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;max-width:920px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+.hero-eyebrow::before{content:'';display:block;width:30px;height:1px;background:var(--accent);}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.8rem,7.5vw,6rem);line-height:.95;letter-spacing:-.01em;color:var(--white);margin-bottom:1.2rem;}
+.hero h1 .dim{color:var(--muted);font-weight:600;}
+.hero h1 .accent{color:var(--accent);}
+.hero-punch{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--muted);max-width:620px;margin-bottom:.8rem;font-weight:300;line-height:1.75;border-left:3px solid var(--line);padding-left:1.2rem;}
+.hero-punch strong{color:var(--text);}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:560px;margin-bottom:2.5rem;line-height:1.7;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-primary{display:inline-block;padding:14px 32px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));cursor:pointer;border:none;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-secondary{display:inline-block;padding:14px 32px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid var(--line);}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;}
+section{padding:90px 5vw;}
+.section-tag{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.section-tag::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;color:var(--white);margin-bottom:1rem;}
+.section-lead{color:var(--muted);font-size:1rem;max-width:660px;margin-bottom:3rem;line-height:1.75;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.highlight-box{border-left:3px solid var(--accent);padding:1rem 1.5rem;background:var(--bg3);margin:1.5rem 0;font-size:.98rem;color:var(--text);line-height:1.7;}
+.tech-stack{margin-top:1.2rem;font-size:.82rem;color:var(--muted);line-height:1.6;}
+.tech-stack strong{color:var(--accent);}
+#problems{background:var(--bg2);}
+.problems-list{display:flex;flex-direction:column;gap:.8rem;}
+.prob{display:grid;grid-template-columns:48px 1fr;gap:1rem;align-items:start;padding:1.2rem 1.5rem;background:var(--bg3);border-left:3px solid var(--line);transition:border-color .2s;}
+.prob:hover{border-left-color:var(--accent);}
+.prob-num{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;color:var(--line);line-height:1.3;}
+.prob:hover .prob-num{color:var(--accent);}
+.prob-text{font-size:.9rem;color:var(--muted);line-height:1.65;margin:0;}
+.prob-text strong{color:var(--text);}
+.problems-right h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.problems-right p{color:var(--muted);font-size:.93rem;margin-bottom:1.2rem;line-height:1.75;}
+.problems-right p strong{color:var(--text);}
+.proof-screenshot{margin:1.5rem 0;border:1px solid var(--line);}
+.proof-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding:.6rem 1rem;background:var(--bg3);border-bottom:1px solid var(--line);}
+.proof-screenshot img{width:100%;display:block;filter:brightness(.92) contrast(1.05);}
+.proof-caption{font-size:.75rem;color:var(--muted);padding:.6rem 1rem;background:var(--bg3);border-top:1px solid var(--line);letter-spacing:.04em;}
+.insider-box{background:var(--bg);border:1px solid rgba(232,160,32,.4);padding:1.8rem 2rem;margin-top:1.5rem;}
+.insider-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;}
+.insider-box blockquote{font-size:.93rem;color:var(--text);line-height:1.75;font-style:italic;}
+.insider-box cite{display:block;margin-top:.8rem;font-size:.78rem;color:var(--muted);font-style:normal;}
+#killer{background:var(--bg);}
+.killer-intro{font-size:1.05rem;color:var(--muted);max-width:700px;margin-bottom:3rem;line-height:1.75;}
+.killer-intro strong{color:var(--text);}
+.killer-showcase{display:flex;flex-direction:column;gap:2px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem;}
+.killer-row{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);}
+.killer-row-reverse{direction:rtl;}
+.killer-row-reverse>*{direction:ltr;}
+.killer-text-col{display:flex;flex-direction:column;gap:2px;background:var(--line);}
+.killer-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .2s;}
+.killer-item:hover{background:var(--bg3);}
+.killer-before{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.killer-problem{font-size:.92rem;color:var(--text);margin-bottom:.7rem;line-height:1.55;}
+.killer-arrow{font-size:.85rem;color:var(--accent);margin-bottom:.5rem;font-weight:700;}
+.killer-solution{font-size:.88rem;color:var(--green);font-weight:500;line-height:1.55;}
+.killer-img-col{background:var(--bg3);display:flex;flex-direction:column;}
+.killer-screen-wrap{display:flex;flex-direction:column;}
+.killer-screen-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--line);flex-shrink:0;}
+.killer-screen-wrap img{width:100%;height:auto;display:block;filter:brightness(.92) contrast(1.05);}
+#what{background:var(--bg2);}
+.what-left h3{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.what-left p{color:var(--muted);font-size:.93rem;margin-bottom:1rem;line-height:1.75;}
+.what-left p strong{color:var(--text);}
+.modules-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.module-card{background:var(--bg3);border:1px solid var(--line);padding:1.4rem;transition:border-color .2s;}
+.module-card:hover{border-color:var(--accent);}
+.module-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.25rem;}
+.module-desc{font-size:.8rem;color:var(--muted);line-height:1.55;}
+#contrast{background:var(--bg);}
+.contrast-table{width:100%;border-collapse:collapse;margin:2rem 0;}
+.contrast-table th{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.2rem;text-align:left;border-bottom:2px solid var(--line);}
+.contrast-table th:first-child{color:var(--muted);}
+.th-erp{color:var(--muted);}
+.th-precit{color:var(--accent);}
+.contrast-table td{padding:.85rem 1.2rem;font-size:.87rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.contrast-table td:first-child{color:var(--muted);}
+.erp-val{color:#555;}
+.precit-val{color:var(--green);font-weight:500;}
+.contrast-table tr:hover td{background:rgba(255,255,255,.015);}
+.contrast-box{background:var(--bg2);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-top:2rem;}
+.contrast-box p{font-size:1rem;color:var(--text);line-height:1.65;}
+.contrast-box p+p{margin-top:.6rem;font-size:.9rem;color:var(--muted);}
+#case{background:var(--bg2);}
+.case-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin:2rem 0;}
+.case-col{background:var(--bg3);border:1px solid var(--line);padding:2rem;}
+.case-col h4{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:1rem;}
+.case-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.case-col li{font-size:.87rem;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.5;}
+.case-col li::before{content:'→';position:absolute;left:0;font-size:.8rem;}
+.case-col.result{border-color:rgba(42,157,92,.4);}
+.case-col.result h4{color:var(--green);}
+.case-col.result li{color:var(--text);}
+.case-col.result li::before{color:var(--green);}
+.case-note{background:var(--bg);border:1px solid var(--line);padding:1.2rem 1.8rem;font-size:.85rem;color:var(--muted);line-height:1.7;}
+.case-note strong{color:var(--text);}
+#about{background:var(--bg);}
+.about-timeline{display:flex;flex-direction:column;}
+.timeline-item{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;padding-bottom:2.5rem;position:relative;}
+.timeline-item:not(:last-child)::after{content:'';position:absolute;left:24px;top:30px;bottom:0;width:1px;background:var(--line);}
+.tl-dash{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);padding-top:2px;text-align:center;}
+.tl-dot{position:absolute;left:21px;top:8px;width:7px;height:7px;background:var(--accent);border-radius:50%;}
+.tl-body h4{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.4rem;}
+.tl-body p{font-size:.88rem;color:var(--muted);line-height:1.6;}
+.about-text h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;line-height:1.2;}
+.about-text p{color:var(--muted);font-size:.93rem;margin-bottom:1.2rem;line-height:1.75;}
+.about-text p strong{color:var(--text);}
+.about-quote{border-left:3px solid var(--accent);padding:1rem 1.5rem;background:var(--bg2);margin:2rem 0;font-size:.98rem;color:var(--text);line-height:1.7;font-style:italic;}
+#approach{background:var(--bg2);}
+.steps{display:flex;flex-direction:column;gap:2rem;}
+.step{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;align-items:start;}
+.step-num{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:800;color:var(--line);line-height:1;}
+.step-body h4{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.4rem;}
+.step-body p{font-size:.88rem;color:var(--muted);line-height:1.7;}
+.approach-right h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;line-height:1.2;}
+.approach-right p{color:var(--muted);font-size:.93rem;margin-bottom:1.2rem;line-height:1.75;}
+.speed-box{background:var(--bg3);border:1px solid var(--accent);padding:1.5rem 2rem;margin:1.5rem 0;}
+.speed-box h4{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:.5rem;}
+.speed-box p{font-size:.87rem;color:var(--muted);line-height:1.7;}
+#security{background:var(--bg);}
+.security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;}
+.sec-card{background:var(--bg2);border:1px solid var(--line);padding:1.8rem;transition:border-color .2s;}
+.sec-card:hover{border-color:var(--accent);}
+.sec-icon{width:42px;height:42px;background:rgba(232,160,32,.07);border:1px solid rgba(232,160,32,.12);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--accent);}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.4rem;}
+.sec-desc{font-size:.85rem;color:var(--muted);line-height:1.6;}
+#pricing{background:var(--bg2);}
+.pricing-note{color:var(--muted);font-size:.93rem;max-width:640px;margin-bottom:2.5rem;line-height:1.75;}
+.pricing-models{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;}
+.pricing-card{background:var(--bg3);border:1px solid var(--line);padding:2.2rem;position:relative;}
+.pricing-card.featured{border-color:var(--accent);}
+.pricing-card.featured::before{content:'RECOMMENDED';position:absolute;top:-1px;right:1.5rem;background:var(--accent);color:var(--bg);font-size:.62rem;font-weight:700;letter-spacing:.12em;padding:4px 10px;font-family:'Barlow Condensed',sans-serif;}
+.pricing-name{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.3rem;}
+.pricing-sub{font-size:.78rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.3rem;}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.pricing-features li{font-size:.86rem;color:var(--muted);padding-left:1.1rem;position:relative;line-height:1.5;}
+.pricing-features li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.78rem;}
+.pricing-features li strong{color:var(--text);}
+.pricing-bottom{background:var(--bg);border:1px solid var(--line);padding:1.8rem 2.2rem;margin-top:1rem;}
+.pricing-bottom p{color:var(--muted);font-size:.9rem;line-height:1.75;}
+.pricing-bottom p+p{margin-top:.7rem;}
+.pricing-bottom strong{color:var(--accent);}
+#portfolio{background:var(--bg);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.project-card{background:var(--bg2);border:1px solid var(--line);padding:2rem;transition:border-color .3s,transform .3s;text-decoration:none;display:block;}
+.project-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.project-tag{display:inline-block;padding:3px 10px;background:rgba(232,160,32,.12);color:var(--accent);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;}
+.project-title{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:.7rem;}
+.project-desc{color:var(--muted);font-size:.87rem;line-height:1.7;margin-bottom:1.3rem;}
+.project-stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.3rem;}
+.stack-tag{padding:3px 10px;border:1px solid var(--line);font-size:.72rem;color:var(--muted);letter-spacing:.06em;}
+.project-footer{display:flex;justify-content:space-between;align-items:center;}
+.project-link{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+#contact{background:var(--bg2);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.contact-info h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1rem;}
+.contact-info p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;line-height:1.75;}
+.cta-bold{background:var(--bg3);border:1px solid var(--accent);padding:1.2rem 1.5rem;margin-bottom:1.5rem;}
+.cta-bold p{font-size:.9rem;color:var(--text);line-height:1.6;}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:.9rem;font-size:.88rem;color:var(--text);}
+.contact-detail .icon{width:34px;height:34px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;}
+.contact-detail a{color:var(--text);text-decoration:none;}
+.contact-detail a:hover{color:var(--accent);}
+.contact-form{display:flex;flex-direction:column;gap:1.1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.form-group input,.form-group textarea,.form-group select{background:var(--bg);border:1px solid var(--line);padding:11px 15px;color:var(--text);font-family:'Barlow',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none;width:100%;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:130px;}
+.form-group select option{background:var(--bg);}
+footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.8rem;color:var(--muted);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.hero-content>*{animation:fadeUp .7s ease forwards;opacity:0;}
+.hero-eyebrow{animation-delay:.1s;}.hero h1{animation-delay:.25s;}.hero-punch{animation-delay:.4s;}.hero-sub{animation-delay:.5s;}.hero-cta{animation-delay:.6s;}.hero-stats{animation-delay:.75s;}
+@media(max-width:1000px){
+  .nav-links{display:none;}
+  .two-col,.case-cols{grid-template-columns:1fr;gap:2.5rem;}
+  .pricing-models{grid-template-columns:1fr;}
+  .modules-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;}
+  .contact-layout{grid-template-columns:1fr;gap:2.5rem;}
+  .killer-row{grid-template-columns:1fr;}
+  .killer-img-col{min-height:220px;}
+  .killer-row-reverse{direction:ltr;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="/en/" class="logo"><svg height="32" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" style="display:block;"><rect x="0" y="2" width="16" height="28" rx="2" fill="#1e2028" stroke="#e8a020" stroke-width="1.2"/><rect x="7" y="7" width="2.5" height="18" rx="0" fill="#e8a020"/><rect x="3" y="7" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.5"/><rect x="3" y="13" width="3" height="3.5" rx="0.5" fill="#e8a020"/><rect x="3" y="19" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.3"/><text x="22" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8eaf0">PREC</text><text x="74" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8a020">IT</text></svg></a>
+  <ul class="nav-links">
+    <li><a href="#problems">Problem</a></li>
+    <li><a href="#killer">Why it works</a></li>
+    <li><a href="#what">System</a></li>
+    <li><a href="#contrast">vs ERP</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="lang-switch">
+    <a href="/" class="lang-btn">PL</a>
+    <a href="/en/" class="lang-btn active">EN</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Daniel Gołąbek · PrecIT · Production Roots</div>
+    <h1><span class="dim">ERP sees reports.</span><br>This system<br><span class="accent">sees the shop floor.</span></h1>
+    <p class="hero-punch">ERP sees what was entered. <strong>This system sees what actually happened.</strong><br>It records reality before anyone gets a chance to "correct" it.</p>
+    <p class="hero-sub">I build systems I couldn't bypass myself when I worked on the production floor. For manufacturing plants and businesses of every size.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">30 minutes — find out if it makes sense</a>
+      <a href="#what" class="btn-secondary">How it works</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">7+</div><div class="stat-label">Years on the production floor</div></div>
+      <div><div class="stat-num">MVP</div><div class="stat-label">In weeks, not months</div></div>
+      <div><div class="stat-num">24h</div><div class="stat-label">Response to enquiry</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="problems">
+  <div class="section-tag">Does this sound familiar?</div>
+  <h2 class="section-title">Your current system is holding you back?</h2>
+  <div class="two-col">
+    <div class="problems-list">
+      <div class="prob"><div class="prob-num">01</div><div><p class="prob-text"><strong>Running production in Excel or on paper?</strong> It's not a habit — it's a system limitation. Your current system isn't flexible enough to work the way your company actually needs. I have an answer for that.</p></div></div>
+      <div class="prob"><div class="prob-num">02</div><div><p class="prob-text"><strong>No real-time data.</strong> The manager finds out about a problem when it's already too late — not when it starts. Reports describe history, not the present.</p></div></div>
+      <div class="prob"><div class="prob-num">03</div><div><p class="prob-text"><strong>Measurements taken "when there's time".</strong> The operator knows when to measure. The system doesn't enforce it or track it. Results appear when someone enters them — not when they were taken.</p></div></div>
+      <div class="prob"><div class="prob-num">04</div><div><p class="prob-text"><strong>Procedures get bypassed.</strong> Not maliciously — the system simply allows it. The error surfaces at the next department or as a customer complaint.</p></div></div>
+      <div class="prob"><div class="prob-num">05</div><div><p class="prob-text"><strong>Production meetings, planning, notes — still on paper.</strong> No shared view, no history, no sync between shifts. Everyone has their own version of reality.</p></div></div>
+      <div class="prob"><div class="prob-num">06</div><div><p class="prob-text"><strong>Every system change is a project and an invoice.</strong> You want to add a field, change a report, adjust a workflow — and you're told it needs analysis, pricing, and a three-month timeline.</p></div></div>
+    </div>
+    <div class="problems-right">
+      <h3>It's not a people problem.<br>It's a tools problem.</h3>
+      <p>The operator doesn't skip a measurement because they're careless. The foreman doesn't write paper reports because they love paper. The manager doesn't have data because nobody delivers it. <strong>Every one of these problems comes from a tool that wasn't designed for the reality of your shop floor.</strong></p>
+      <div class="proof-screenshot">
+        <div class="proof-label">Monitor System — foreman dashboard</div>
+        <img src="/images/ms-foreman-en.png" alt="Monitor System — Foreman Dashboard with live KPIs and workstation table" loading="lazy">
+        <div class="proof-caption">Live KPIs, per-station output, downtime and availability — updated in real time on every operator action</div>
+      </div>
+      <div class="insider-box">
+        <div class="insider-label">From the shop floor</div>
+        <blockquote>"Working as a foreman and operator, I knew how to bypass the system — how to make it see what it was supposed to see instead of actually recording the problems that would eventually surface. Either at the next department or as a customer complaint. When I built my own system — I closed every single one of those loopholes."</blockquote>
+        <cite>— Daniel Gołąbek, PrecIT</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="killer">
+  <div class="section-tag">Why this system works</div>
+  <h2 class="section-title">Designed by someone who knows<br>every loophole</h2>
+  <p class="killer-intro">A system designed by a developer without production experience has gaps — because the designer didn't know they existed. <strong>Every one of the mechanisms below comes from a real problem I witnessed on the shop floor.</strong></p>
+  <div class="killer-showcase">
+    <div class="killer-row">
+      <div class="killer-text-col">
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Operator skips the measurement — enters a result "from memory" or doesn't enter anything</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Production registration is blocked until the measurement result is entered within the required time window</div>
+        </div>
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Result outside tolerance — operator approves and moves on, problem surfaces three shifts later</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Automatic process block and immediate alert to the foreman — batch doesn't move until a decision is made</div>
+        </div>
+      </div>
+      <div class="killer-img-col">
+        <div class="killer-screen-wrap">
+          <div class="killer-screen-label">Quality Gate — production halted, mandatory measurement required</div>
+          <img src="/images/qg-gate-en.png" alt="Quality Gate — mandatory quality check screen with system description" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="killer-row killer-row-reverse">
+      <div class="killer-img-col">
+        <div class="killer-screen-wrap">
+          <div class="killer-screen-label">Operator Terminal — machine-side interface, live counter and shift plan</div>
+          <img src="/images/ot-main-en.png" alt="Operator Terminal — active plan item with 847 pcs counter and shift plan sidebar" loading="lazy">
+        </div>
+      </div>
+      <div class="killer-text-col">
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Shift report filled in "after the fact" at end of shift — data doesn't reflect reality</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Data recorded in real time by the operator — report generated automatically, no retroactive editing possible</div>
+        </div>
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Shift ends — next shift doesn't know what happened, foreman hands over verbally and something always gets lost</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Digital shift handover — production status, events, notes and open issues visible to the incoming shift immediately</div>
+        </div>
+      </div>
+    </div>
+    <div class="killer-row">
+      <div class="killer-text-col">
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Production meeting — notes on paper, everyone has their own version, last week's decisions are gone</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Shared digital planning view — one source document, visible to all roles, with full change history</div>
+        </div>
+        <div class="killer-item">
+          <div class="killer-before">Typical system</div>
+          <div class="killer-problem">Integrating with RCP or counters takes months and tens of thousands in customisation costs</div>
+          <div class="killer-arrow">↓</div>
+          <div class="killer-solution">Works without automation — and is architecturally ready to connect when the plant is ready. No rebuild needed.</div>
+        </div>
+      </div>
+      <div class="killer-img-col">
+        <div class="killer-screen-wrap">
+          <div class="killer-screen-label">TV Mode — floor kiosk with 5 live production line tiles</div>
+          <img src="/images/ms-tv-en.png" alt="Monitor System TV Mode — fullscreen kiosk display for production floor" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box">"System built around the company — not the company built around the system."</div>
+</section>
+
+<section id="what">
+  <div class="section-tag">What the system does</div>
+  <h2 class="section-title">One system — full digitalization</h2>
+  <p class="section-lead">Not just counting units. The system covers the entire workflow — from the operator at the machine to the management report. Every module is built around your actual process.</p>
+  <div class="two-col">
+    <div class="what-left">
+      <h3>Not a reporting system.<br>A system that enforces process.</h3>
+      <p>The difference is fundamental. A reporting system accepts whatever data you give it — correct or not. <strong>A process-enforcing system doesn't allow the next step if the previous one wasn't completed correctly.</strong></p>
+      <p>This eliminates an entire class of errors — not through supervision, but through architecture. The operator physically cannot skip a required step. The manager doesn't have to police it — the system does it for them.</p>
+      <p>If you need it — the system can also cover areas beyond the shop floor: sales, orders, clients, document flow, office workflow. <strong>One common platform instead of several disconnected tools — if that's what you're looking for.</strong></p>
+      <div class="tech-stack"><strong>Technology stack:</strong> React · Node.js · Cloudflare Workers · PostgreSQL / Supabase · D1 SQLite · REST API · Row Level Security (RLS). Open standards — any senior developer can take it over without issues.</div>
+    </div>
+    <div>
+      <div class="modules-grid">
+        <div class="module-card"><div class="module-name">Production</div><p class="module-desc">Plans, orders, workstations, execution logging, quality blocks, live monitoring.</p></div>
+        <div class="module-card"><div class="module-name">Workforce & RCP</div><p class="module-desc">Working time, shift schedule, operation assignment, efficiency, RCP card sync.</p></div>
+        <div class="module-card"><div class="module-name">Quality & measurements</div><p class="module-desc">Measurement forms, schedules, blocks on deviation, full result history.</p></div>
+        <div class="module-card"><div class="module-name">Reports & KPIs</div><p class="module-desc">Automatic shift reports, management KPIs, OEE, downtime and defect analysis.</p></div>
+        <div class="module-card"><div class="module-name">Meetings & planning</div><p class="module-desc">Digital production meetings, shared planning view, shift handover, decision history.</p></div>
+        <div class="module-card"><div class="module-name">Inventory & resources</div><p class="module-desc">Material stock, inventory movements, low stock alerts, operational costs.</p></div>
+        <div class="module-card"><div class="module-name">Sales & CRM</div><p class="module-desc">Orders, clients, quotes, cooperation history — for companies that need more than production.</p></div>
+        <div class="module-card"><div class="module-name">Workflow & documents</div><p class="module-desc">Digitizing office processes, approvals, document flow, eliminating paper versions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contrast">
+  <div class="section-tag">Comparison</div>
+  <h2 class="section-title">Custom system vs ERP / off-the-shelf MES</h2>
+  <p class="section-lead">ERP is a tool for managing the company — finance, supply chain, HR. It sees the production floor through the lens of transactions. A custom system sees it from the operator's level.</p>
+  <table class="contrast-table">
+    <thead><tr><th>Criterion</th><th class="th-erp">ERP / off-the-shelf MES</th><th class="th-precit">PrecIT custom system</th></tr></thead>
+    <tbody>
+      <tr><td>Time to first results</td><td class="erp-val">Months — analysis, config, training, testing</td><td class="precit-val">Weeks — MVP first, expand when we know it works</td></tr>
+      <tr><td>Cost of modifications</td><td class="erp-val">Every change is an IT project with timeline and invoice</td><td class="precit-val">Changes built into the collaboration model — flexible and fast</td></tr>
+      <tr><td>Process fit</td><td class="erp-val">Company adapts to the system — "that's the standard"</td><td class="precit-val">System built around your actual process, not the other way around</td></tr>
+      <tr><td>Quality & procedural blocks</td><td class="erp-val">Difficult or expensive to implement as non-standard</td><td class="precit-val">Standard — process block on measurement or quality error</td></tr>
+      <tr><td>Operator interface</td><td class="erp-val">Designed by developers without shop floor experience</td><td class="precit-val">Designed by someone who personally worked at such a station</td></tr>
+      <tr><td>RCP and counter integration</td><td class="erp-val">Possible, but expensive and time-consuming</td><td class="precit-val">Yes — with or without automation, depending on plant readiness</td></tr>
+      <tr><td>Procedure bypass possible</td><td class="erp-val">Operators often enter "what it should see" — the system allows it</td><td class="precit-val">Block mechanisms eliminate the ability to skip required steps</td></tr>
+      <tr><td>Solution ownership</td><td class="erp-val">Licence — vendor dependency, fees for every change</td><td class="precit-val">Full IP ownership or subscription — your choice, no lock-in</td></tr>
+    </tbody>
+  </table>
+  <div class="contrast-box">
+    <p>ERP manages the company. This system solves problems ERP doesn't address — from the operator level to the management report.</p>
+    <p>ERP and a custom system aren't a zero-sum choice. They're two different tools for two different problems. For companies without ERP — I build exactly what they need, without unnecessary complexity.</p>
+  </div>
+</section>
+
+<section id="case">
+  <div class="section-tag">Implementation example</div>
+  <h2 class="section-title">What it looks like in practice</h2>
+  <p class="section-lead">A manufacturing plant, several dozen employees, serial production. A typical situation — no giant IT budget, a real problem on the shop floor.</p>
+  <div class="case-cols">
+    <div class="case-col">
+      <h4>Before</h4>
+      <ul>
+        <li>Paper reporting — 2–3 hours of foreman time daily</li>
+        <li>Measurements taken "when there's time", not on schedule</li>
+        <li>No real-time operator efficiency tracking</li>
+        <li>Quality errors caught at the next department or by the customer</li>
+        <li>Production meetings on notepads, decisions lost between shifts</li>
+        <li>Manager without data for the morning report</li>
+      </ul>
+    </div>
+    <div class="case-col">
+      <h4>Implementation</h4>
+      <ul>
+        <li>Process analysis on the floor — talks with operators, foremen, planner</li>
+        <li>MVP in 6 weeks: production logging, shift plan, live monitoring</li>
+        <li>Quality blocks and measurement forms with schedules deployed</li>
+        <li>Digital production meetings — one view for everyone</li>
+        <li>Digital shift handover — incoming shift sees status immediately</li>
+        <li>Team training, documentation, ability to expand during operation</li>
+      </ul>
+    </div>
+    <div class="case-col result">
+      <h4>Results</h4>
+      <ul>
+        <li>Reporting time: from 2–3 hours to 15–20 minutes daily</li>
+        <li>Zero possibility of skipping a measurement — system blocks the next step</li>
+        <li>Manager sees live production status from any device</li>
+        <li>Quality errors caught during production — not at the customer</li>
+        <li>Production meetings — decisions recorded, visible, with history</li>
+        <li>Automatic daily report for management — no foreman involvement needed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="case-note"><strong>Important note:</strong> The data above is representative for a typical implementation at this scale. Every plant is different — which is why I always start by analysing the actual process. If the plant isn't ready for automation — the system works just as effectively with manual entry. <em>Results may vary depending on the process and scale — but the direction of change remains the same.</em></div>
+</section>
+
+<section id="about">
+  <div class="section-tag">Who I am</div>
+  <h2 class="section-title">Daniel Gołąbek</h2>
+  <p class="section-lead">I didn't come to IT from a programming school. I came from the production floor — and that's exactly what makes the difference.</p>
+  <div class="two-col">
+    <div class="about-timeline">
+      <div class="timeline-item">
+        <div class="tl-dash">—</div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Production operator</h4><p>I started at the machine. Tolerances in microns, quality standards, shift work. I saw production from the lowest level — and understood every frustration of an operator forced to work with a system that doesn't fit.</p></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dash">—</div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Production foreman</h4><p>Responsibility for the entire department — plans, standards, quality, people, reports. I saw how systems get bypassed, how data gets "corrected", how problems surface at the customer. And I knew how to fix it.</p></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dash">—</div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Building my own tools</h4><p>I learned to code out of necessity — not from a course. First systems for my own department. Proof of concept, presented to management, strong approval from operators and foremen. It worked.</p></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dash">—</div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>PrecIT</h4><p>Combining shop floor experience with programming skills. Building systems for manufacturing plants and businesses — from simple tools to full management platforms. For every size of company.</p></div></div>
+      </div>
+    </div>
+    <div class="about-text">
+      <h3>I'm not a developer who read about manufacturing.</h3>
+      <p>I'm a person from the shop floor who learned to code — to solve problems no available system was solving.</p>
+      <p>That difference matters in every detail. A developer without production experience will design a data entry form. I'll design a form that <strong>won't let you close a shift if the data is incomplete</strong> — because I know what happens when the foreman gets a report with gaps.</p>
+      <p>I work with large manufacturing plants and with small businesses — with Jan who has a dozen employees and wants to finally stop running his company in Excel. <strong>You don't need to know exactly what you want — you just need to know what hurts.</strong></p>
+      <div class="about-quote">"I knew how to bypass every poorly designed system. So when I built my own — I closed every single one of those loopholes. The system is supposed to see what actually happens, not what someone decided it should see."</div>
+      <p style="font-size:.85rem;color:var(--muted);">Kielce, Poland · <a href="/cdn-cgi/l/email-protection#4b2024253f2a203f0b3b392e28223f653b27" style="color:var(--muted);"><span class="__cf_email__" data-cfemail="254e4a4b51444e5165555740464c510b5549">[email&#160;protected]</span></a> · NDA signed before the first conversation</p>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="section-tag">How I work</div>
+  <h2 class="section-title">From first contact<br>to a working system</h2>
+  <div class="two-col">
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Conversation — free, no commitment</h4><p>30 minutes of conversation — and you know whether this makes sense for your company. You describe the problem, I ask questions. Before any conversation about processes and data, I sign an NDA.</p></div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Understanding your process — on your terms</h4><p>I analyse your actual workflow. The format is up to you — conversations with key people, documentation review, workshops, or time spent directly on the floor. Talking to an operator gives a different picture than talking to a director — I need both perspectives.</p></div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-body"><h4>MVP — a working core in weeks</h4><p>You don't wait 6–12 months like with ERP. I build the working core of the system — whatever hurts most — and test it with real users. Further development happens in stages, once we know the foundation works.</p></div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Growth and handover</h4><p>The system grows with the company. Depending on the collaboration model — I develop it further or hand over complete know-how to your IT team with documentation and the code repository.</p></div></div>
+    </div>
+    <div class="approach-right">
+      <h3>Building a system takes months.<br>Understanding production takes years.</h3>
+      <p>A dev company can build a system in months. But to know what to build — you need to understand production from the inside. What frustrates an operator at the end of a shift. What a manager looks for in a 6am report. Where the loopholes are that let people bypass procedures without consequence.</p>
+      <p>This combination — deep production knowledge plus IT skills — <strong>is not available on the market as a standard offering</strong>. Large IT companies implement systems without this knowledge. The result: systems that technically work but collect dust on the shop floor.</p>
+      <div class="speed-box">
+        <h4>You don't wait months for a system</h4>
+        <p>First results in weeks, not months. I start with what hurts most — not a long requirements list and a year-long schedule. The system grows with the company, in stages, once each step is confirmed to work.</p>
+      </div>
+      <p>I work with manufacturing plants of every size — and with companies that don't do manufacturing at all. If you have a problem with management, reporting, workflow or simply too much Excel — <strong>this is exactly the right contact.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="section-tag">Security & confidentiality</div>
+  <h2 class="section-title">Your data, your procedures,<br>your property</h2>
+  <p class="section-lead">Production and financial data is a key company asset. I treat security as a priority — not as a checkbox, but as part of the system architecture.</p>
+  <div class="security-grid">
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="sec-title">NDA before the first conversation</div><p class="sec-desc">I sign a confidentiality agreement before you start describing your processes. Your procedures and internal data don't leave this collaboration.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></div><div class="sec-title">Roles and permissions</div><p class="sec-desc">Access based on roles — the operator sees their workstation, the foreman sees their department, management sees everything. No user accesses data outside their scope.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M2 12h20"/></svg></div><div class="sec-title">On-premise or cloud hosting</div><p class="sec-desc">Option to deploy on-premise — on the client's servers, no data in an external cloud. Or secure cloud — depending on your company's security policy.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="sec-title">Data isolation (RLS)</div><p class="sec-desc">Row Level Security at the database level — each user sees only what they're permitted to see, even on shared infrastructure.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div><div class="sec-title">You define the access scope</div><p class="sec-desc">In the B2B contract model — your IT team and security department define what I have access to. I don't touch systems I don't need to touch.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 13 21 11 3 8 12 2 12"/></svg></div><div class="sec-title">Your data stays yours</div><p class="sec-desc">Data belongs to you — always. With a one-time purchase you receive the full source code. No vendor lock-in.</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-tag">Collaboration models</div>
+  <h2 class="section-title">How we can work together</h2>
+  <p class="pricing-note">Every company is different — different needs, different IT resources, different risk appetite. Three real models below. Pricing always individual — describe the problem, I'll reply within 24h with specific questions and a preliminary scope.</p>
+  <div class="pricing-models">
+    <div class="pricing-card featured">
+      <div class="pricing-name">One-time purchase</div>
+      <div class="pricing-sub">Full intellectual property</div>
+      <ul class="pricing-features">
+        <li><strong>Full IP ownership</strong> — source code, documentation, know-how handed to your IT</li>
+        <li>One-time investment that <strong>pays off for years</strong> — no monthly licence fees</li>
+        <li>Vendor independence — your IT manages and develops independently</li>
+        <li>Training, technical documentation, Git repository handover</li>
+        <li><strong>Recommended</strong> for companies thinking long-term</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Subscription model</div>
+      <div class="pricing-sub">Lower entry threshold</div>
+      <ul class="pricing-features">
+        <li>Lower upfront cost — <strong>easier decision threshold</strong></li>
+        <li>System hosted, maintained and developed by me</li>
+        <li>Updates, backup and technical support included</li>
+        <li>Option to switch to one-time purchase at any point</li>
+        <li>Ideal for companies that prefer <strong>service over ownership</strong></li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">B2B Contract</div>
+      <div class="pricing-sub">Working with your IT team</div>
+      <ul class="pricing-features">
+        <li>I engage for a <strong>defined period</strong> — weeks or months</li>
+        <li>I work directly with your IT — delivering production knowledge and the technical solution</li>
+        <li><strong>No access to sensitive systems</strong> — scope defined by you</li>
+        <li>When the company has IT but lacks production expertise to design the system</li>
+        <li>After the contract — <strong>full independence</strong> for your team</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pricing-bottom">
+    <p><strong>Technology stack:</strong> React · Node.js · Cloudflare Workers · PostgreSQL / Supabase · D1 SQLite · REST API · RLS. Open standards code — no dependency on the code owner.</p>
+    <p><strong>I don't sell a system.</strong> I sell control over what's actually happening on your production floor — and a tool that grows with your company, without lock-ins and expensive modifications every time your needs change.</p>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-tag">Completed projects</div>
+  <h2 class="section-title">Portfolio</h2>
+  <p class="section-lead">Not course projects — things that work or worked in real environments.</p>
+  <div class="portfolio-grid">
+    <a href="/en/projekty/monitor-system.html" class="project-card">
+      <div class="project-tag">Production system</div>
+      <div class="project-title">Monitor System</div>
+      <p class="project-desc">Web application for production management and process enforcement — real-time KPIs, dedicated operator terminal at the machine, mandatory quality gate with CMM integration that halts the line until a certified measurement is confirmed. TV kiosk mode for the floor. Fully configurable to any plant's structure, shifts and processes. Demo project with strong approval from operators and management.</p>
+      <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Node.js</span><span class="stack-tag">Supabase</span><span class="stack-tag">CMM integration</span></div>
+      <div class="project-footer"><span class="project-link">View screenshots →</span></div>
+    </a>
+    <a href="/projekty/laserpro-manager.html" class="project-card">
+      <div class="project-tag">SaaS Platform</div>
+      <div class="project-title">LaserPro Manager</div>
+      <p class="project-desc">Management system for laser industry companies — cost calculator, price list with PDF quotes, sales, orders, inventory, project community library. 13 languages, 16 currencies with live rates, Stripe. Globally scalable.</p>
+      <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Supabase</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Stripe</span></div>
+      <div class="project-footer"><span class="project-link">View screenshots →</span></div>
+    </a>
+    <a href="/projekty/zagroda.html" class="project-card">
+      <div class="project-tag">Side project</div>
+      <div class="project-title">Zagroda</div>
+      <p class="project-desc">Gamified educational platform for grades 1–5. A side project — but technical proof that a multi-role system with a database and permission logic can be built fully serverless, at zero hosting cost.</p>
+      <div class="project-stack"><span class="stack-tag">Cloudflare Workers</span><span class="stack-tag">D1 SQLite</span><span class="stack-tag">JavaScript</span></div>
+      <div class="project-footer"><span class="project-link">Read more →</span></div>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-tag">Let's start</div>
+  <h2 class="section-title">Describe your problem</h2>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h3>You don't need to know<br>exactly what you want.</h3>
+      <p>Describe the problem you want to solve — not the solution you're imagining. I'll reply within 24 hours with specific questions. First conversation is free and without commitment.</p>
+      <div class="cta-bold"><p>30 minutes of conversation — and you know whether this makes sense for your company. If it doesn't — I'll tell you straight and save your time.</p></div>
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;">What happens after you send</div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:.87rem;color:var(--muted);"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">01</span>I reply within 24h with specific questions</div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:.87rem;color:var(--muted);"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">02</span>We schedule a 30-minute call — I sign NDA before it</div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:.87rem;color:var(--muted);"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">03</span>If it makes sense — I propose a concrete direction and preliminary scope</div>
+        </div>
+      </div>
+      <div class="contact-detail"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span>Daniel Gołąbek</span></div>
+      <div class="contact-detail"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Kielce, Poland</span></div>
+      <div class="contact-detail"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span><a href="/cdn-cgi/l/email-protection#d7bcb8b9a3b6bca397a7a5b2b4bea3f9a7bb"><span class="__cf_email__" data-cfemail="1c777372687d77685c6c6e797f7568326c70">[email&#160;protected]</span></a></span></div>
+      <div class="contact-detail"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><span>Response within 24h</span></div>
+      <div class="contact-detail"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><span>NDA before the first conversation</span></div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xdapzkvq" method="POST">
+      <div class="form-row">
+        <div class="form-group"><label>Full name</label><input type="text" name="name" required></div>
+        <div class="form-group"><label>Company</label><input type="text" name="company"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+      <div class="form-group">
+        <label>What is your enquiry about</label>
+        <select name="type">
+          <option>Production system / shop floor management</option>
+          <option>Business process digitalization</option>
+          <option>Custom web application</option>
+          <option>Website</option>
+          <option>B2B contract / working with my IT team</option>
+          <option>Consulting — I don't know where to start</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What's the problem? Describe it</label>
+        <textarea name="message" placeholder="What isn't working? What takes too long? What makes you lose control of the process? You don't need to know what you want — just what's bothering you." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Send — I'll reply within 24h</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a href="/en/" class="logo"><svg height="32" viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg" style="display:block;"><rect x="0" y="2" width="16" height="28" rx="2" fill="#1e2028" stroke="#e8a020" stroke-width="1.2"/><rect x="7" y="7" width="2.5" height="18" rx="0" fill="#e8a020"/><rect x="3" y="7" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.5"/><rect x="3" y="13" width="3" height="3.5" rx="0.5" fill="#e8a020"/><rect x="3" y="19" width="3" height="3.5" rx="0.5" fill="#e8a020" opacity="0.3"/><text x="22" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8eaf0">PREC</text><text x="74" y="23" font-family="Barlow Condensed,sans-serif" font-size="22" font-weight="800" fill="#e8a020">IT</text></svg></a>
+  <p class="footer-copy">© 2026 PrecIT · Daniel Gołąbek · 
