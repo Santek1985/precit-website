@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrecIT – Daniel Gołąbek | Systemy IT dla produkcji</title>
-<meta name="description" content="Systemy które egzekwują proces produkcyjny — nie tylko go rejestrują. ERP widzi raporty. Ten system widzi halę. Daniel Gołąbek, PrecIT.">
+<title>PrecIT – Daniel Gołąbek | Platforma MES dla zakładów produkcyjnych</title>
+<meta name="description" content="PrecIT — modułowa platforma MES dla zakładów produkcyjnych. System który prowadzi operatora przez proces. ERP widzi raporty. Ten system widzi halę. Daniel Gołąbek, PrecIT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -169,40 +169,38 @@ section{padding:90px 5vw;}
 .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
 .project-card{background:var(--bg2);border:1px solid var(--line);padding:2rem;transition:border-color .3s,transform .3s;text-decoration:none;display:block;}
 .project-card:hover{border-color:var(--accent);transform:translateY(-4px);}
-.project-tag{display:inline-block;padding:3px 10px;background:rgba(232,160,32,.12);color:var(--accent);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;}
-.project-title{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:.7rem;}
-.project-desc{color:var(--muted);font-size:.87rem;line-height:1.7;margin-bottom:1.3rem;}
-.project-stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.3rem;}
-.stack-tag{padding:3px 10px;border:1px solid var(--line);font-size:.72rem;color:var(--muted);letter-spacing:.06em;}
-.project-footer{display:flex;justify-content:space-between;align-items:center;}
-.project-link{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
-#contact{background:var(--bg2);}
-.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
-.contact-info h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1rem;}
-.contact-info p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;line-height:1.75;}
-.cta-bold{background:var(--bg3);border:1px solid var(--accent);padding:1.2rem 1.5rem;margin-bottom:1.5rem;}
-.cta-bold p{font-size:.9rem;color:var(--text);line-height:1.6;}
-.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:.9rem;font-size:.88rem;color:var(--text);}
-.contact-detail .icon{width:34px;height:34px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;}
-.contact-detail a{color:var(--text);text-decoration:none;}
+.project-card.flagship{border-color:rgba(232,160,32,.4);background:linear-gradient(135deg,var(--bg2) 0%,rgba(232,160,32,.04) 100%);}
+.project-card.flagship:hover{border-color:var(--accent);}
+.project-tag{display:inline-block;padding:3px 10px;background:rgba(232,160,32,.1);color:var(--accent);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;}
+.project-card.flagship .project-tag{background:var(--accent);color:var(--bg);}
+.project-title{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
+.project-desc{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem;}
+.project-stack{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.2rem;}
+.stack-tag{display:inline-block;padding:3px 10px;border:1px solid var(--line);font-size:.7rem;color:var(--muted);letter-spacing:.04em;}
+.project-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--line);}
+.project-link{font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+#contact{background:var(--bg);}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-info h3{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.contact-info p{color:var(--muted);font-size:.93rem;margin-bottom:1.5rem;line-height:1.75;}
+.cta-bold{background:var(--bg2);border-left:3px solid var(--accent);padding:1rem 1.5rem;margin-bottom:2rem;}
+.cta-bold p{color:var(--text);font-size:.93rem;margin:0;font-weight:500;}
+.contact-detail{display:flex;align-items:center;gap:12px;padding:.6rem 0;color:var(--muted);font-size:.88rem;}
+.contact-detail .icon{width:32px;height:32px;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
+.contact-detail a{color:var(--muted);text-decoration:none;transition:color .2s;}
 .contact-detail a:hover{color:var(--accent);}
-.contact-form{display:flex;flex-direction:column;gap:1.1rem;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
-.form-group{display:flex;flex-direction:column;gap:6px;}
-.form-group label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.form-group input,.form-group textarea,.form-group select{background:var(--bg);border:1px solid var(--line);padding:11px 15px;color:var(--text);font-family:'Barlow',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none;width:100%;}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);}
-.form-group textarea{resize:vertical;min-height:130px;}
-.form-group select option{background:var(--bg);}
-footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.contact-form{background:var(--bg2);border:1px solid var(--line);padding:2.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;}
+.form-group{display:flex;flex-direction:column;margin-bottom:1.2rem;}
+.form-group label{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.form-group input,.form-group textarea,.form-group select{background:var(--bg3);border:1px solid var(--line);color:var(--text);padding:.7rem .9rem;font-family:'Barlow',sans-serif;font-size:.92rem;transition:border-color .2s;font-weight:300;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--accent);}
+.form-group textarea{min-height:130px;resize:vertical;}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
 .footer-copy{font-size:.8rem;color:var(--muted);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-.hero-content>*{animation:fadeUp .7s ease forwards;opacity:0;}
-.hero-eyebrow{animation-delay:.1s;}.hero h1{animation-delay:.25s;}.hero-punch{animation-delay:.4s;}.hero-sub{animation-delay:.5s;}.hero-cta{animation-delay:.6s;}.hero-stats{animation-delay:.75s;}
-@media(max-width:1000px){
+@media(max-width:900px){
   .nav-links{display:none;}
-  .two-col,.case-cols{grid-template-columns:1fr;gap:2.5rem;}
-  .pricing-models{grid-template-columns:1fr;}
+  .two-col,.case-cols,.pricing-models{grid-template-columns:1fr;}
   .modules-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
   .hero-stats{gap:1.5rem;flex-wrap:wrap;}
@@ -237,8 +235,8 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
   <div class="hero-content">
     <div class="hero-eyebrow">Daniel Gołąbek · PrecIT · Production Roots</div>
     <h1><span class="dim">ERP widzi raporty.</span><br>Ten system<br><span class="accent">widzi halę.</span></h1>
-    <p class="hero-punch">ERP widzi to co zostało wpisane. <strong>Ten system widzi to co faktycznie się wydarzyło.</strong><br>Rejestruje rzeczywistość zanim ktokolwiek zdąży ją „poprawić".</p>
-    <p class="hero-sub">Buduję systemy których sam nie potrafiłbym obejść pracując na hali produkcyjnej. Dla zakładów produkcyjnych i firm każdej wielkości.</p>
+    <p class="hero-punch">ERP widzi to co zostało wpisane. <strong>Ten system widzi to co faktycznie się wydarzyło.</strong><br>Rejestruje rzeczywistość w momencie w którym się dzieje — nie po fakcie.</p>
+    <p class="hero-sub">Buduję systemy zaprojektowane od strony hali — w każdym kluczowym punkcie podpowiadają operatorowi gotową drogę. Dla zakładów produkcyjnych każdej wielkości.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn-primary">30 minut — dowiedz się czy to ma sens</a>
       <a href="#what" class="btn-secondary">Jak to działa</a>
@@ -257,23 +255,23 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
   <div class="two-col">
     <div class="problems-list">
       <div class="prob"><div class="prob-num">01</div><div><p class="prob-text"><strong>Prowadzisz produkcję w Excelu lub na papierze?</strong> To nie jest przyzwyczajenie — to ograniczenie systemu. Twój obecny system nie jest wystarczająco elastyczny, żeby działać tak jak faktycznie potrzebuje twoja firma. Mam na to odpowiedź.</p></div></div>
-      <div class="prob"><div class="prob-num">02</div><div><p class="prob-text"><strong>Brak danych w czasie rzeczywistym.</strong> Kierownik dowiaduje się o problemie gdy jest już za późno — nie kiedy zaczyna. Raporty opisują historię, nie teraźniejszość.</p></div></div>
-      <div class="prob"><div class="prob-num">03</div><div><p class="prob-text"><strong>Pomiary „kiedy jest czas".</strong> Operator wie kiedy mierzyć. System tego nie egzekwuje ani nie śledzi. Wyniki pojawiają się kiedy ktoś je wpisze — nie kiedy zostały wykonane.</p></div></div>
-      <div class="prob"><div class="prob-num">04</div><div><p class="prob-text"><strong>Procedury są omijane.</strong> Nie złośliwie — system po prostu na to pozwala. Błąd wychodzi w kolejnym dziale albo jako reklamacja klienta.</p></div></div>
+      <div class="prob"><div class="prob-num">02</div><div><p class="prob-text"><strong>Brak danych w czasie rzeczywistym.</strong> Kierownictwo dowiaduje się o problemie gdy jest już za późno na reakcję. Raporty opisują historię, nie teraźniejszość.</p></div></div>
+      <div class="prob"><div class="prob-num">03</div><div><p class="prob-text"><strong>Pomiary „kiedy jest czas".</strong> Operator wie kiedy mierzyć. System tego nie pilnuje ani nie sygnalizuje. Wyniki pojawiają się kiedy ktoś je wpisze — nie kiedy zostały wykonane.</p></div></div>
+      <div class="prob"><div class="prob-num">04</div><div><p class="prob-text"><strong>Procedury bez punktów kontrolnych.</strong> Operator nie wie czy kolejny krok jest dopuszczony, a system nie podpowiada. Błąd wychodzi w kolejnym dziale albo jako reklamacja klienta.</p></div></div>
       <div class="prob"><div class="prob-num">05</div><div><p class="prob-text"><strong>Narady produkcyjne, planowanie, notatki — wciąż na papierze.</strong> Brak wspólnego widoku, historii, synchronizacji między zmianami. Każdy ma własną wersję rzeczywistości.</p></div></div>
       <div class="prob"><div class="prob-num">06</div><div><p class="prob-text"><strong>Każda zmiana w systemie to projekt i faktura.</strong> Chcesz dodać pole, zmienić raport, dostosować workflow — słyszysz że potrzeba analizy, wyceny i trzech miesięcy.</p></div></div>
     </div>
     <div class="problems-right">
       <h3>To nie jest problem ludzi.<br>To jest problem narzędzi.</h3>
-      <p>Operator nie pomija pomiaru bo jest niedbały. Mistrz nie pisze papierowych raportów bo kocha papier. Kierownik nie ma danych bo nikt mu ich nie dostarcza. <strong>Każdy z tych problemów wynika z narzędzia które nie zostało zaprojektowane dla realiów twojej hali.</strong></p>
+      <p>Operator wpisuje wynik z głowy nie dlatego że jest niedbały — bo nie ma w danym momencie podpowiedzi co dokładnie zrobić. Kierownik zmiany pisze papierowe raporty nie dlatego że kocha papier — bo nie ma narzędzia które samo by się wypełniało w trakcie zmiany. Kierownictwo nie ma danych nie dlatego że są niedostępne — bo nikt nie zaprojektował tego, jak mają trafiać tam gdzie są potrzebne. <strong>Każdy z tych problemów wynika z narzędzia które nie zostało zaprojektowane dla realiów twojej hali.</strong></p>
       <div class="proof-screenshot">
-        <div class="proof-label">Monitor System — panel mistrza</div>
-        <img src="/images/ms-foreman-pl.png" alt="Monitor System — Panel Mistrza z KPI na żywo i tabelą stanowisk" loading="lazy">
+        <div class="proof-label">PrecIT System — panel Lidera</div>
+        <img src="/images/ms-foreman-pl.png" alt="PrecIT System — Panel Lidera z KPI na żywo i tabelą stanowisk" loading="lazy">
         <div class="proof-caption">KPI na żywo, wykonanie per stanowisko, przestoje i dostępność — aktualizowane w czasie rzeczywistym przy każdej akcji operatora</div>
       </div>
       <div class="insider-box">
         <div class="insider-label">Z hali produkcyjnej</div>
-        <blockquote>„Pracując jako mistrz i operator wiedziałem jak obejść system — jak sprawić żeby widział to co powinien widzieć zamiast faktycznie rejestrować problemy które i tak wyjdą. Albo w kolejnym dziale albo jako reklamacja klienta. Kiedy budowałem własny system — zamknąłem każdą z tych luk."</blockquote>
+        <blockquote>„Pracując jako kierownik zmiany i operator widziałem każdy moment, w którym pracownik staje przed wyborem: zrobić zgodnie z procedurą czy zrobić szybciej. System, który nie podpowiada gotowej drogi w takim momencie, zawsze przegra z presją czasu. Kiedy budowałem własny — w każdym takim punkcie pojawia się gotowa propozycja działania."</blockquote>
         <cite>— Daniel Gołąbek, PrecIT</cite>
       </div>
     </div>
@@ -282,27 +280,27 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 
 <section id="killer">
   <div class="section-tag">Dlaczego ten system działa</div>
-  <h2 class="section-title">Zaprojektowany przez kogoś kto zna<br>każde obejście</h2>
-  <p class="killer-intro">System zaprojektowany przez developera bez doświadczenia produkcyjnego ma luki — bo projektant nie wiedział że istnieją. <strong>Każdy z mechanizmów poniżej wynika z realnego problemu który widziałem na hali.</strong></p>
+  <h2 class="section-title">Zaprojektowany przez kogoś,<br>kto zna każdy moment decyzji</h2>
+  <p class="killer-intro">System zaprojektowany przez developera bez doświadczenia produkcyjnego ma luki — bo projektant nie wiedział że istnieją. <strong>Każdy z mechanizmów poniżej wynika z realnego problemu który widziałem na hali — i z gotowej drogi którą system w tym momencie podsuwa operatorowi.</strong></p>
   <div class="killer-showcase">
     <div class="killer-row">
       <div class="killer-text-col">
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
-          <div class="killer-problem">Operator pomija pomiar — wpisuje wynik „z głowy" albo nie wpisuje niczego</div>
+          <div class="killer-before">Inne systemy</div>
+          <div class="killer-problem">Operator staje przed pomiarem — bez podpowiedzi kiedy go zrobić i jak go zarejestrować. Wpisuje wynik „z głowy" albo nie wpisuje niczego</div>
           <div class="killer-arrow">↓</div>
-          <div class="killer-solution">Rejestracja produkcji jest zablokowana do czasu wprowadzenia wyniku pomiaru w wymaganym oknie czasowym</div>
+          <div class="killer-solution">System sam zatrzymuje produkcję w wymaganym momencie, prowadzi operatora przez cykl pomiarowy i czyta wynik bezpośrednio z urządzenia — nic do wpisywania z głowy</div>
         </div>
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
-          <div class="killer-problem">Wynik poza tolerancją — operator zatwierdza i jedzie dalej, problem wychodzi trzy zmiany później</div>
+          <div class="killer-before">Inne systemy</div>
+          <div class="killer-problem">Wynik poza tolerancją — operator zatwierdza dalej, problem wychodzi trzy zmiany później</div>
           <div class="killer-arrow">↓</div>
-          <div class="killer-solution">Automatyczna blokada procesu i natychmiastowy alert do mistrza — partia nie jedzie dalej do czasu podjęcia decyzji</div>
+          <div class="killer-solution">Automatyczna eskalacja do kierownika zmiany z nazwiskiem i numerem wewnętrznym, automatyczne oddzielanie sztuk niezgodnych — partia nie jedzie dalej bez świadomej decyzji</div>
         </div>
       </div>
       <div class="killer-img-col">
         <div class="killer-screen-wrap">
-          <div class="killer-screen-label">Bramka Jakości — produkcja wstrzymana, obowiązkowy pomiar</div>
+          <div class="killer-screen-label">Bramka Jakości — system prowadzi przez obowiązkowy pomiar</div>
           <img src="/images/qg-gate-pl.png" alt="Bramka Jakości — ekran obowiązkowej kontroli z opisem systemu" loading="lazy">
         </div>
       </div>
@@ -316,14 +314,14 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       </div>
       <div class="killer-text-col">
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
+          <div class="killer-before">Inne systemy</div>
           <div class="killer-problem">Raport zmianowy wypełniany „po fakcie" na koniec zmiany — dane nie odzwierciedlają rzeczywistości</div>
           <div class="killer-arrow">↓</div>
-          <div class="killer-solution">Dane rejestrowane w czasie rzeczywistym przez operatora — raport generuje się automatycznie, bez możliwości retroaktywnej edycji</div>
+          <div class="killer-solution">Dane rejestrowane w momencie zdarzenia przez akcję operatora — raport generuje się sam, bez retroaktywnej edycji</div>
         </div>
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
-          <div class="killer-problem">Koniec zmiany — kolejna zmiana nie wie co się działo, mistrz przekazuje ustnie i coś zawsze ginie</div>
+          <div class="killer-before">Inne systemy</div>
+          <div class="killer-problem">Koniec zmiany — kolejna zmiana nie wie co się działo, kierownik zmiany przekazuje ustnie i coś zawsze ginie</div>
           <div class="killer-arrow">↓</div>
           <div class="killer-solution">Cyfrowe przekazanie zmiany — status produkcji, zdarzenia, notatki i otwarte sprawy widoczne dla przychodzącej zmiany natychmiast</div>
         </div>
@@ -332,13 +330,13 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
     <div class="killer-row">
       <div class="killer-text-col">
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
+          <div class="killer-before">Inne systemy</div>
           <div class="killer-problem">Narada produkcyjna — notatki na papierze, każdy ma swoją wersję, decyzje z zeszłego tygodnia zaginęły</div>
           <div class="killer-arrow">↓</div>
           <div class="killer-solution">Wspólny cyfrowy widok planowania — jeden dokument źródłowy, widoczny dla wszystkich ról, z pełną historią zmian</div>
         </div>
         <div class="killer-item">
-          <div class="killer-before">Typowy system</div>
+          <div class="killer-before">Inne systemy</div>
           <div class="killer-problem">Integracja z RCP lub licznikami to miesiące i dziesiątki tysięcy złotych w customizacji</div>
           <div class="killer-arrow">↓</div>
           <div class="killer-solution">Działa bez automatyzacji — i jest architektonicznie gotowy do podłączenia gdy zakład będzie gotowy. Bez przebudowy.</div>
@@ -347,7 +345,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       <div class="killer-img-col">
         <div class="killer-screen-wrap">
           <div class="killer-screen-label">Tryb TV — kiosk halowy z 5 kaflami linii produkcyjnych na żywo</div>
-          <img src="/images/ms-tv-pl.png" alt="Monitor System Tryb TV — pełnoekranowy kiosk na halę produkcyjną" loading="lazy">
+          <img src="/images/ms-tv-pl.png" alt="Tryb TV — pełnoekranowy kiosk na halę produkcyjną" loading="lazy">
         </div>
       </div>
     </div>
@@ -357,26 +355,26 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 
 <section id="what">
   <div class="section-tag">Co system robi</div>
-  <h2 class="section-title">Jeden system — pełna cyfryzacja</h2>
-  <p class="section-lead">Nie tylko zliczanie sztuk. System obejmuje cały workflow — od operatora przy maszynie po raport zarządczy. Każdy moduł jest zbudowany wokół twojego rzeczywistego procesu.</p>
+  <h2 class="section-title">Modułowa platforma MES</h2>
+  <p class="section-lead">Nie tylko zliczanie sztuk. Platforma obejmuje cały workflow produkcji — od operatora przy maszynie po raport zarządczy. Każdy moduł aktywujesz osobno, każdy jest budowany wokół twojego rzeczywistego procesu.</p>
   <div class="two-col">
     <div class="what-left">
-      <h3>Nie system raportowania.<br>System egzekwowania procesu.</h3>
-      <p>Różnica jest fundamentalna. System raportowania przyjmuje dane jakie mu podasz — poprawne lub nie. <strong>System egzekwujący proces nie pozwala na kolejny krok jeśli poprzedni nie został wykonany poprawnie.</strong></p>
-      <p>To eliminuje całą klasę błędów — nie przez nadzór, ale przez architekturę. Operator fizycznie nie może pominąć wymaganego kroku. Kierownik nie musi tego pilnować — system robi to za niego.</p>
-      <p>Jeśli tego potrzebujesz — system może obejmować też obszary poza halą: sprzedaż, zamówienia, klientów, obieg dokumentów, workflow biurowy. <strong>Jedna wspólna platforma zamiast kilku rozłącznych narzędzi — jeśli tego szukasz.</strong></p>
-      <div class="tech-stack"><strong>Stack technologiczny:</strong> React · Node.js · Cloudflare Workers · PostgreSQL / Supabase · D1 SQLite · REST API · Row Level Security (RLS). Otwarte standardy — każdy senior developer może to przejąć bez problemów.</div>
+      <h3>Nie system raportowania.<br>System, który prowadzi przez proces.</h3>
+      <p>Różnica jest fundamentalna. System raportowania przyjmuje dane jakie mu podasz — poprawne lub nie. <strong>System, który prowadzi przez proces, w każdym kluczowym momencie podpowiada operatorowi gotową drogę: co teraz, dlaczego i jakie są dopuszczalne wartości.</strong></p>
+      <p>To eliminuje całą klasę błędów — nie przez nadzór, ale przez podpowiadanie. Operator nie zostaje sam z wyborem między procedurą a presją czasu. Kierownictwo nie musi tego pilnować — system prowadzi z poziomu interfejsu.</p>
+      <p>Każdy moduł — Lider, Proces, Operator, Planista, Jakość, UR, HR, BHP — aktywujesz osobno, zgodnie z profilem twojej firmy. <strong>Kupujesz tylko to czego potrzebujesz dzisiaj. Reszta dochodzi później, bez przebudowy.</strong></p>
+      <div class="tech-stack"><strong>Stack technologiczny:</strong> Node.js · Express · Knex · PostgreSQL 18 · React 18 · WebSockets · Zod · JWT · architektura modułowa · multi-tenant · on-premise (Windows). Otwarte standardy — każdy senior developer może to przejąć bez problemów.</div>
     </div>
     <div>
       <div class="modules-grid">
-        <div class="module-card"><div class="module-name">Produkcja</div><p class="module-desc">Plany, zlecenia, stanowiska, rejestracja wykonania, blokady jakościowe, monitoring na żywo.</p></div>
-        <div class="module-card"><div class="module-name">Pracownicy i RCP</div><p class="module-desc">Czas pracy, grafik zmianowy, przypisania operacji, efektywność, synchronizacja kart RCP.</p></div>
-        <div class="module-card"><div class="module-name">Jakość i pomiary</div><p class="module-desc">Formularze pomiarowe, harmonogramy, blokady na odchyłkę, pełna historia wyników.</p></div>
-        <div class="module-card"><div class="module-name">Raporty i KPI</div><p class="module-desc">Automatyczne raporty zmianowe, KPI zarządcze, OEE, analiza przestojów i braków.</p></div>
-        <div class="module-card"><div class="module-name">Narady i planowanie</div><p class="module-desc">Cyfrowe narady produkcyjne, wspólny widok planowania, przekazanie zmiany, historia decyzji.</p></div>
-        <div class="module-card"><div class="module-name">Magazyn i zasoby</div><p class="module-desc">Stan materiałów, ruchy magazynowe, alerty niskiego stanu, koszty operacyjne.</p></div>
-        <div class="module-card"><div class="module-name">Sprzedaż i CRM</div><p class="module-desc">Zamówienia, klienci, oferty, historia współpracy — dla firm które potrzebują więcej niż produkcja.</p></div>
-        <div class="module-card"><div class="module-name">Workflow i dokumenty</div><p class="module-desc">Cyfryzacja procesów biurowych, zatwierdzenia, obieg dokumentów, eliminacja wersji papierowych.</p></div>
+        <div class="module-card"><div class="module-name">Lider</div><p class="module-desc">KPI na żywo, grafik miesięczny brygad, zmiany, zdarzenia produkcyjne, oceny pracowników, kwalifikacje, urlopy i zastępstwa.</p></div>
+        <div class="module-card"><div class="module-name">Proces (Traceability)</div><p class="module-desc">Partie, marszruty, karty identyfikacyjne, BOM, rework, split, montaż — pełna identyfikowalność detalu od surowca do wysyłki.</p></div>
+        <div class="module-card"><div class="module-name">Operator</div><p class="module-desc">Terminal przy maszynie. System prowadzi przez plan zmianowy, pomiary, zgłaszanie problemów i przekazanie zmiany.</p></div>
+        <div class="module-card"><div class="module-name">Planista</div><p class="module-desc">Plany produkcyjne, zlecenia, Gantt, harmonogramowanie operacji na linie i maszyny zgodnie z marszrutami.</p></div>
+        <div class="module-card"><div class="module-name">Jakość (NCR)</div><p class="module-desc">Formularze pomiarowe, harmonogramy kontroli, eskalacje na odchyłki, blokady, pełna historia wyników.</p></div>
+        <div class="module-card"><div class="module-name">UR (Utrzymanie Ruchu)</div><p class="module-desc">Awarie, eskalacje, MTBF/MTTR, harmonogramy przeglądów, historia interwencji per maszyna.</p></div>
+        <div class="module-card"><div class="module-name">HR</div><p class="module-desc">Pracownicy, brygady, kwalifikacje, badania lekarskie, szkolenia, oceny, nieobecności, delegacje, hierarchia organizacyjna.</p></div>
+        <div class="module-card"><div class="module-name">BHP / PPOŻ</div><p class="module-desc">Bezpieczeństwo i higiena pracy, przeglądy stanowisk, szkolenia okresowe, incydenty, audyty PPOŻ.</p></div>
       </div>
     </div>
   </div>
@@ -384,67 +382,65 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 
 <section id="contrast">
   <div class="section-tag">Porównanie</div>
-  <h2 class="section-title">System dedykowany vs ERP / gotowy MES</h2>
-  <p class="section-lead">ERP to narzędzie do zarządzania firmą — finanse, łańcuch dostaw, HR. Halę produkcyjną widzi przez pryzmat transakcji. System dedykowany widzi ją z poziomu operatora.</p>
+  <h2 class="section-title">System dopasowany vs ERP / sztywny MES</h2>
+  <p class="section-lead">ERP to narzędzie do zarządzania firmą — finanse, łańcuch dostaw, HR. Halę produkcyjną widzi przez pryzmat transakcji. Sztywny komercyjny MES widzi halę przez pryzmat broszury dostawcy. PrecIT widzi ją z poziomu operatora.</p>
   <table class="contrast-table">
-    <thead><tr><th>Kryterium</th><th class="th-erp">ERP / gotowy MES</th><th class="th-precit">System dedykowany PrecIT</th></tr></thead>
+    <thead><tr><th>Kryterium</th><th class="th-erp">ERP / sztywny MES</th><th class="th-precit">Platforma MES PrecIT</th></tr></thead>
     <tbody>
-      <tr><td>Czas do pierwszych wyników</td><td>Miesiące — analiza, konfiguracja, szkolenia, testy</td><td class="precit-val">Tygodnie — najpierw MVP, rozbudowa gdy wiemy że działa</td></tr>
-      <tr><td>Koszt modyfikacji</td><td>Każda zmiana to projekt IT z harmonogramem i fakturą</td><td class="precit-val">Zmiany wbudowane w model współpracy — elastycznie i szybko</td></tr>
+      <tr><td>Czas do pierwszych wyników</td><td>Miesiące — analiza, konfiguracja, szkolenia, testy</td><td class="precit-val">Tygodnie — najpierw MVP modułu, rozbudowa gdy wiemy że działa</td></tr>
+      <tr><td>Koszt modyfikacji</td><td>Każda zmiana to projekt IT u dostawcy z harmonogramem i fakturą</td><td class="precit-val">Zmiany wbudowane w model współpracy — elastycznie i szybko</td></tr>
       <tr><td>Dopasowanie do procesu</td><td>Firma dostosowuje się do systemu — „taki jest standard"</td><td class="precit-val">System zbudowany wokół twojego rzeczywistego procesu, nie na odwrót</td></tr>
-      <tr><td>Blokady jakościowe i proceduralne</td><td>Trudne lub drogie jako niestandardowe</td><td class="precit-val">Standard — blokada procesu na pomiar lub błąd jakościowy</td></tr>
-      <tr><td>Interfejs operatora</td><td>Projektowany przez developerów bez doświadczenia produkcyjnego</td><td class="precit-val">Projektowany przez kogoś kto osobiście pracował na takim stanowisku</td></tr>
-      <tr><td>Integracja z RCP i licznikami</td><td>Możliwa, ale droga i czasochłonna</td><td class="precit-val">Tak — z automatyzacją lub bez, zależnie od gotowości zakładu</td></tr>
-      <tr><td>Możliwość ominięcia procedury</td><td>Operatorzy często wpisują „jak powinno być" — system na to pozwala</td><td class="precit-val">Mechanizmy blokad eliminują możliwość pominięcia wymaganych kroków</td></tr>
-      <tr><td>Własność rozwiązania</td><td>Licencja — zależność od dostawcy, opłaty za każdą zmianę</td><td class="precit-val">Pełna własność IP lub subskrypcja — twój wybór, bez lock-in</td></tr>
+      <tr><td>Modułowość</td><td>Pakiety licencyjne — płacisz za to czego nie używasz</td><td class="precit-val">Aktywujesz tylko te moduły których faktycznie potrzebujesz</td></tr>
+      <tr><td>Deploy</td><td>Często wymagana chmura dostawcy lub złożona instalacja</td><td class="precit-val">On-premise Windows, license offline — dane nie opuszczają twojej infrastruktury</td></tr>
+      <tr><td>Vendor lock-in</td><td>Kod zamknięty, dane w formacie dostawcy</td><td class="precit-val">Otwarte standardy, pełny kod źródłowy (przy zakupie IP)</td></tr>
     </tbody>
   </table>
   <div class="contrast-box">
-    <p>ERP zarządza firmą. Ten system rozwiązuje problemy których ERP nie adresuje — od poziomu operatora po raport zarządczy.</p>
-    <p>ERP i system dedykowany to nie jest wybór zero-jedynkowy. To dwa różne narzędzia do dwóch różnych problemów. Dla firm bez ERP — buduję dokładnie to czego potrzebują, bez zbędnej złożoności.</p>
+    <p>To nie znaczy że ERP jest zły. ERP robi swoje — finanse, łańcuch dostaw, kadry — i robi to dobrze. <strong>Ale ERP nie jest narzędziem dla operatora przy maszynie.</strong> A sztywny komercyjny MES nie jest narzędziem dla zakładu który chce w przyszłym kwartale zmienić jeden krok marszruty bez pisania podania do dostawcy.</p>
+    <p>Platforma MES PrecIT współpracuje z twoim ERP — nie zastępuje go. Wymienia dane, eskaluje zdarzenia, generuje raporty zarządcze. <strong>Robi to czego ERP nie potrafi — widzi i prowadzi halę w czasie rzeczywistym.</strong></p>
   </div>
 </section>
 
 <section id="case">
-  <div class="section-tag">Przykład wdrożenia</div>
+  <div class="section-tag">Typowy scenariusz cyfryzacji</div>
   <h2 class="section-title">Jak to wygląda w praktyce</h2>
   <p class="section-lead">Zakład produkcyjny, kilkadziesiąt osób, produkcja seryjna. Typowa sytuacja — bez gigantycznego budżetu IT, z realnym problemem na hali.</p>
   <div class="case-cols">
     <div class="case-col">
       <h4>Przed</h4>
       <ul>
-        <li>Papierowe raportowanie — 2–3 godziny pracy mistrza dziennie</li>
+        <li>Papierowe raportowanie — 2–3 godziny pracy kierownika zmiany dziennie</li>
         <li>Pomiary „kiedy jest czas", nie według harmonogramu</li>
         <li>Brak śledzenia efektywności operatora w czasie rzeczywistym</li>
         <li>Błędy jakościowe wykrywane w kolejnym dziale lub przez klienta</li>
         <li>Narady produkcyjne na notesach, decyzje gubione między zmianami</li>
-        <li>Kierownik bez danych na poranny raport</li>
+        <li>Brak codziennego raportu z poprzedniej zmiany przed startem porannym</li>
       </ul>
     </div>
     <div class="case-col">
       <h4>Wdrożenie</h4>
       <ul>
-        <li>Analiza procesu na hali — rozmowy z operatorami, mistrzami, planistą</li>
-        <li>MVP w 6 tygodni: rejestracja produkcji, plan zmianowy, monitoring na żywo</li>
-        <li>Blokady jakościowe i formularze pomiarowe z harmonogramami</li>
-        <li>Cyfrowe narady produkcyjne — jeden widok dla wszystkich</li>
+        <li>Analiza procesu bezpośrednio na hali — rozmowy z operatorami, kierownikami zmian, planistą</li>
+        <li>Aktywacja modułów Lider + Operator + Proces w pierwszych tygodniach</li>
+        <li>Konfiguracja marszrut, kart identyfikacyjnych, formatów numeru partii pod konkretny zakład</li>
+        <li>Cyfrowe narady produkcyjne — jeden widok dla wszystkich ról</li>
         <li>Cyfrowe przekazanie zmiany — przychodząca zmiana widzi status natychmiast</li>
-        <li>Szkolenie zespołu, dokumentacja, możliwość rozbudowy podczas działania</li>
+        <li>Szkolenie zespołu, dokumentacja, rozbudowa o kolejne moduły gdy poprzednie są zweryfikowane</li>
       </ul>
     </div>
     <div class="case-col result">
       <h4>Wyniki</h4>
       <ul>
         <li>Czas raportowania: z 2–3 godzin do 15–20 minut dziennie</li>
-        <li>Zero możliwości pominięcia pomiaru — system blokuje kolejny krok</li>
-        <li>Kierownik widzi live status produkcji z każdego urządzenia</li>
+        <li>System prowadzi operatora przez każdy obowiązkowy pomiar — bez ryzyka pominięcia</li>
+        <li>Kierownictwo widzi live status produkcji z każdego urządzenia</li>
         <li>Błędy jakościowe wykrywane podczas produkcji — nie u klienta</li>
         <li>Narady produkcyjne — decyzje zapisane, widoczne, z historią</li>
-        <li>Automatyczny dzienny raport dla zarządu — bez udziału mistrza</li>
+        <li>Automatyczny dzienny raport dla zarządu — generuje się sam</li>
       </ul>
     </div>
   </div>
-  <div class="case-note"><strong>Ważna uwaga:</strong> Dane powyżej są reprezentatywne dla typowego wdrożenia w tej skali. Każdy zakład jest inny — dlatego zawsze zaczynam od analizy rzeczywistego procesu. Jeśli zakład nie jest gotowy na automatyzację — system działa równie skutecznie z manualnym wprowadzaniem danych. <em>Wyniki mogą się różnić w zależności od procesu i skali — ale kierunek zmiany pozostaje taki sam.</em></div>
+  <div class="case-note"><strong>Ważna uwaga:</strong> Dane powyżej są reprezentatywne dla typowego scenariusza cyfryzacji w tej skali. Każdy zakład jest inny — dlatego zawsze zaczynam od analizy rzeczywistego procesu. Jeśli zakład nie jest gotowy na automatyzację — system działa równie skutecznie z manualnym wprowadzaniem danych. <em>Wyniki mogą się różnić w zależności od procesu i skali — ale kierunek zmiany pozostaje taki sam.</em></div>
 </section>
 
 <section id="about">
@@ -459,23 +455,23 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       </div>
       <div class="timeline-item">
         <div class="tl-dash">—</div>
-        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Mistrz produkcji</h4><p>Odpowiedzialność za cały wydział — plany, normy, jakość, ludzie, raporty. Widziałem jak systemy są obchodzane, jak dane są „poprawiane", jak problemy wychodzą u klienta. I wiedziałem jak to naprawić.</p></div></div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Kierownik zmiany</h4><p>Odpowiedzialność za cały wydział — plany, normy, jakość, ludzie, raporty. Widziałem każdy moment, w którym system zostawiał operatora bez podpowiedzi, każdy raport „naprawiany" na koniec zmiany, każdy błąd, który dochodził do klienta zamiast wyjść lokalnie. I wiedziałem dokładnie jak to naprawić.</p></div></div>
       </div>
       <div class="timeline-item">
         <div class="tl-dash">—</div>
-        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Budowanie własnych narzędzi</h4><p>Nauczyłem się programować z konieczności — nie z kursu. Pierwsze systemy dla własnego wydziału. Proof of concept, prezentacja kierownictwu, silna aprobata od operatorów i mistrzów. Działało.</p></div></div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>Budowanie własnych narzędzi</h4><p>Nauczyłem się programować z konieczności — nie z kursu. Pierwsze systemy dla własnego wydziału. Proof of concept, prezentacja kierownictwu, silna aprobata od operatorów i kierowników zmian. Działało.</p></div></div>
       </div>
       <div class="timeline-item">
         <div class="tl-dash">—</div>
-        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>PrecIT</h4><p>Łączenie doświadczenia z hali z umiejętnościami programistycznymi. Budowanie systemów dla zakładów produkcyjnych i firm — od prostych narzędzi po pełne platformy zarządcze. Dla każdej wielkości firmy.</p></div></div>
+        <div style="position:relative"><div class="tl-dot"></div><div class="tl-body"><h4>PrecIT System</h4><p>Modułowa platforma MES — łączenie doświadczenia z hali z umiejętnościami programistycznymi i nowoczesnymi narzędziami AI-First. Buduję pod konkretny profil zakładu, etapami, weryfikując każdy moduł na hali zanim ruszę z kolejnym.</p></div></div>
       </div>
     </div>
     <div class="about-text">
       <h3>Nie jestem developerem który czytał o produkcji.</h3>
       <p>Jestem osobą z hali która nauczyła się programować — żeby rozwiązać problemy których żaden dostępny system nie rozwiązywał.</p>
-      <p>Ta różnica ma znaczenie w każdym szczególe. Developer bez doświadczenia produkcyjnego zaprojektuje formularz do wpisywania danych. Ja zaprojektuję formularz który <strong>nie pozwoli zamknąć zmiany jeśli dane są niekompletne</strong> — bo wiem co się dzieje gdy mistrz dostaje raport z lukami.</p>
+      <p>Ta różnica ma znaczenie w każdym szczególe. Developer bez doświadczenia produkcyjnego zaprojektuje formularz do wpisywania danych. Ja zaprojektuję formularz który <strong>nie pozwoli zamknąć zmiany jeśli dane są niekompletne — i jednocześnie podpowie operatorowi czego brakuje i gdzie to znaleźć</strong>.</p>
       <p>Pracuję z dużymi zakładami produkcyjnymi i z małymi firmami — z Janem który ma kilkanaście osób i chce wreszcie przestać prowadzić firmę w Excelu. <strong>Nie musisz wiedzieć dokładnie czego chcesz — musisz wiedzieć co boli.</strong></p>
-      <div class="about-quote">„Wiedziałem jak obejść każdy źle zaprojektowany system. Dlatego kiedy budowałem własny — zamknąłem każdą z tych luk. System ma widzieć to co faktycznie się dzieje, nie to co ktoś zdecydował że powinien widzieć."</div>
+      <div class="about-quote">„Wiedziałem dokładnie w którym miejscu źle zaprojektowany system zostawia operatora bez pomocy. Dlatego kiedy budowałem własny — w każdym takim punkcie podpowiadam mu gotową drogę. System ma widzieć co faktycznie się dzieje, prowadzić przez proces i pokazywać następny krok."</div>
       <p style="font-size:.85rem;color:var(--muted);">Kielce · <a href="mailto:daniel@precit.pl" style="color:var(--muted);">daniel@precit.pl</a> · NDA podpisywane przed pierwszą rozmową</p>
     </div>
   </div>
@@ -487,19 +483,19 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
   <div class="two-col">
     <div class="steps">
       <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Rozmowa — bezpłatna, bez zobowiązań</h4><p>30 minut rozmowy — i wiesz czy to ma sens dla twojej firmy. Opisujesz problem, zadaję pytania. Przed każdą rozmową o procesach i danych podpisuję NDA.</p></div></div>
-      <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Zrozumienie twojego procesu — na twoich zasadach</h4><p>Analizuję twój rzeczywisty workflow. Format zależy od ciebie — rozmowy z kluczowymi osobami, przegląd dokumentacji, warsztaty, lub czas spędzony bezpośrednio na hali. Rozmowa z operatorem daje inny obraz niż rozmowa z dyrektorem — potrzebuję obu perspektyw.</p></div></div>
-      <div class="step"><div class="step-num">03</div><div class="step-body"><h4>MVP — działający rdzeń w tygodniach</h4><p>Nie czekasz 6–12 miesięcy jak przy ERP. Buduję działający rdzeń systemu — to co boli najbardziej — i testuję z prawdziwymi użytkownikami. Dalszy rozwój idzie etapami gdy wiemy że fundament działa.</p></div></div>
-      <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Wzrost i przekazanie</h4><p>System rośnie razem z firmą. W zależności od modelu współpracy — rozwijam go dalej lub przekazuję kompletne know-how twojemu zespołowi IT z dokumentacją i repozytorium kodu.</p></div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Zrozumienie twojego procesu — bezpośrednio na hali</h4><p>Analizuję twój rzeczywisty workflow z poziomu hali. Format zależy od ciebie — rozmowy z kluczowymi osobami, przegląd dokumentacji, warsztaty, lub czas spędzony bezpośrednio przy maszynach. Rozmowa z operatorem daje inny obraz niż rozmowa z dyrektorem — potrzebuję obu perspektyw, ale fundament zawsze pochodzi od hali.</p></div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-body"><h4>MVP — działający rdzeń w tygodniach</h4><p>Nie czekasz 6–12 miesięcy jak przy ERP. Buduję działający rdzeń modułu — to co boli najbardziej — i testuję z prawdziwymi użytkownikami. Dalszy rozwój idzie etapami gdy wiemy że fundament działa.</p></div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Wzrost i przekazanie</h4><p>System rośnie razem z firmą — moduł po module, gdy widzimy że poprzedni działa i daje wartość. W zależności od modelu współpracy — rozwijam go dalej lub przekazuję kompletne know-how twojemu zespołowi IT z dokumentacją i repozytorium kodu.</p></div></div>
     </div>
     <div class="approach-right">
       <h3>Zbudowanie systemu zajmuje miesiące.<br>Zrozumienie produkcji — lata.</h3>
-      <p>Firma developerska może zbudować system w miesiącach. Ale żeby wiedzieć co budować — trzeba rozumieć produkcję od środka. Co frustruje operatora na końcu zmiany. Czego szuka kierownik w raporcie o 6 rano. Gdzie są luki które pozwalają omijać procedury bez konsekwencji.</p>
-      <p>To połączenie — głęboka wiedza produkcyjna plus umiejętności IT — <strong>nie jest dostępne na rynku jako standardowa oferta</strong>. Duże firmy IT wdrażają systemy bez tej wiedzy. Efekt: systemy które technicznie działają ale zbierają kurz na hali.</p>
+      <p>Firma developerska może zbudować system w miesiącach. Ale żeby wiedzieć co budować — trzeba rozumieć produkcję od środka. Co frustruje operatora na końcu zmiany. Gdzie kierownik zmiany traci czas na ręczne łączenie danych. W którym momencie procedura przegrywa z presją czasu — i co dokładnie system powinien w tym momencie podpowiedzieć.</p>
+      <p>To połączenie — głęboka wiedza produkcyjna plus umiejętności IT plus nowoczesne narzędzia AI-First — <strong>nie jest dostępne na rynku jako standardowa oferta</strong>. Duże firmy IT wdrażają systemy bez tej wiedzy. Efekt: systemy które technicznie działają ale zbierają kurz na hali.</p>
       <div class="speed-box">
         <h4>Nie czekasz miesięcy na system</h4>
         <p>Pierwsze wyniki w tygodniach, nie miesiącach. Zaczynam od tego co boli najbardziej — nie od długiej listy wymagań i rocznego harmonogramu. System rośnie razem z firmą, etapami, gdy każdy krok jest potwierdzony że działa.</p>
       </div>
-      <p>Pracuję z zakładami produkcyjnymi każdej wielkości — i z firmami które w ogóle nie robią produkcji. Jeśli masz problem z zarządzaniem, raportowaniem, workflow lub po prostu za dużo Excela — <strong>to jest dokładnie właściwy kontakt.</strong></p>
+      <p>Pracuję z zakładami produkcyjnymi każdej wielkości. Jeśli masz problem z zarządzaniem produkcją, raportowaniem, kontrolą jakości lub po prostu za dużo Excela na hali — <strong>to jest dokładnie właściwy kontakt.</strong></p>
     </div>
   </div>
 </section>
@@ -507,14 +503,14 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
 <section id="security">
   <div class="section-tag">Bezpieczeństwo i poufność</div>
   <h2 class="section-title">Twoje dane, twoje procedury,<br>twoja własność</h2>
-  <p class="section-lead">Dane produkcyjne i finansowe to kluczowy zasób firmy. Traktuję bezpieczeństwo priorytetowo — nie jako checkbox, ale jako część architektury systemu.</p>
+  <p class="section-lead">Dane produkcyjne to kluczowy zasób firmy. Traktuję bezpieczeństwo priorytetowo — nie jako checkbox, ale jako część architektury systemu.</p>
   <div class="security-grid">
     <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="sec-title">NDA przed pierwszą rozmową</div><p class="sec-desc">Podpisuję umowę o poufności zanim zaczniesz opisywać swoje procesy. Twoje procedury i dane wewnętrzne nie opuszczają tej współpracy.</p></div>
-    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></div><div class="sec-title">Role i uprawnienia</div><p class="sec-desc">Dostęp oparty na rolach — operator widzi swoje stanowisko, mistrz swój wydział, zarząd widzi wszystko. Żaden użytkownik nie dostaje się do danych poza swoim zakresem.</p></div>
-    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M2 12h20"/></svg></div><div class="sec-title">On-premise lub cloud</div><p class="sec-desc">Możliwość wdrożenia on-premise — na serwerach klienta, bez danych w zewnętrznym chmurze. Lub bezpieczny cloud — zależnie od polityki bezpieczeństwa twojej firmy.</p></div>
-    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="sec-title">Izolacja danych (RLS)</div><p class="sec-desc">Row Level Security na poziomie bazy danych — każdy użytkownik widzi tylko to do czego ma uprawnienia, nawet na wspólnej infrastrukturze.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></div><div class="sec-title">Role i uprawnienia</div><p class="sec-desc">135 uprawnień w 35 rolach. Operator widzi swoje stanowisko, lider swój wydział, zarząd widzi wszystko. Żaden użytkownik nie wychodzi poza swój zakres.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M2 12h20"/></svg></div><div class="sec-title">On-premise Windows</div><p class="sec-desc">Wdrożenie na serwerach klienta — uruchamiane przez <code>start.bat</code>. Bez chmury, bez połączenia z internetem, bez zewnętrznych usług. Dane pozostają w twojej infrastrukturze.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="sec-title">License offline HMAC</div><p class="sec-desc">Licencja weryfikowana lokalnie przez HMAC-SHA256 — bez aktywacji online, bez telemetrii do producenta. Twoja instancja działa autonomicznie.</p></div>
     <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div><div class="sec-title">Ty definiujesz zakres dostępu</div><p class="sec-desc">W modelu kontraktu B2B — twój dział IT i bezpieczeństwa określa do czego mam dostęp. Nie dotykam systemów których nie potrzebuję dotykać.</p></div>
-    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 13 21 11 3 8 12 2 12"/></svg></div><div class="sec-title">Twoje dane zostają twoje</div><p class="sec-desc">Dane należą do ciebie — zawsze. Przy zakupie jednorazowym otrzymujesz pełny kod źródłowy. Żadnego vendor lock-in.</p></div>
+    <div class="sec-card"><div class="sec-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 13 21 11 3 8 12 2 12"/></svg></div><div class="sec-title">Twoje dane zostają twoje</div><p class="sec-desc">Dane należą do ciebie — zawsze. Przy zakupie jednorazowym otrzymujesz pełny kod źródłowy. Żadnego vendor lock-in, żadnego formatu zamkniętego.</p></div>
   </div>
 </section>
 
@@ -558,7 +554,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
     </div>
   </div>
   <div class="pricing-bottom">
-    <p><strong>Stack technologiczny:</strong> React · Node.js · Cloudflare Workers · PostgreSQL / Supabase · D1 SQLite · REST API · RLS. Kod na otwartych standardach — bez zależności od właściciela kodu.</p>
+    <p><strong>Stack technologiczny:</strong> Node.js · Express · Knex · PostgreSQL 18 · React 18 · WebSockets · Zod · JWT · architektura modułowa · multi-tenant · on-premise (Windows). Kod na otwartych standardach — bez zależności od właściciela kodu.</p>
     <p><strong>Nie sprzedaję systemu.</strong> Sprzedaję kontrolę nad tym co faktycznie dzieje się na twojej hali produkcyjnej — i narzędzie które rośnie razem z firmą, bez lock-inów i drogich modyfikacji za każdym razem gdy twoje potrzeby się zmieniają.</p>
   </div>
 </section>
@@ -568,10 +564,17 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
   <h2 class="section-title">Portfolio</h2>
   <p class="section-lead">Nie projekty z kursu — rzeczy które działają lub działały w realnych środowiskach.</p>
   <div class="portfolio-grid">
+    <a href="/projekty/precit-system.html" class="project-card flagship">
+      <div class="project-tag">Platforma MES</div>
+      <div class="project-title">PrecIT System</div>
+      <p class="project-desc">Modułowa platforma MES dla zakładów produkcyjnych. 27 etapów backendu (Lider, Proces, Operator, Planista, Jakość, UR, HR, BHP, Powiadomienia i pozostałe) wykonanych w niecały miesiąc w modelu AI-First. Multi-tenant, on-premise Windows, license offline HMAC. Każdy moduł aktywowany osobno zgodnie z profilem klienta. Środowisko testowe na skali 1997 pracowników, ~1700 maszyn, ~170 linii.</p>
+      <div class="project-stack"><span class="stack-tag">Node.js</span><span class="stack-tag">Express</span><span class="stack-tag">PostgreSQL 18</span><span class="stack-tag">React 18</span><span class="stack-tag">WebSockets</span><span class="stack-tag">Zod</span><span class="stack-tag">JWT</span></div>
+      <div class="project-footer"><span class="project-link">Zobacz pełny opis →</span></div>
+    </a>
     <a href="/projekty/monitor-system.html" class="project-card">
-      <div class="project-tag">System produkcyjny</div>
+      <div class="project-tag">System pokazowy</div>
       <div class="project-title">Monitor System</div>
-      <p class="project-desc">Aplikacja webowa do zarządzania produkcją i egzekwowania procesu — KPI w czasie rzeczywistym, dedykowany terminal operatora przy maszynie, obowiązkowa bramka jakości z integracją CMM która wstrzymuje linię do czasu potwierdzenia certyfikowanego wyniku pomiaru. Tryb TV kiosk na halę. W pełni konfigurowalny pod strukturę, zmiany i procesy każdego zakładu. Projekt pokazowy z silną aprobatą operatorów i kierownictwa.</p>
+      <p class="project-desc">Wcześniejsza aplikacja webowa do zarządzania produkcją i prowadzenia przez proces — KPI w czasie rzeczywistym, dedykowany terminal operatora przy maszynie, obowiązkowa bramka jakości z integracją CMM, tryb TV kiosk na halę. Projekt pokazowy z silną aprobatą operatorów i kierownictwa. Stanowił bazę koncepcyjną dla PrecIT System.</p>
       <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Node.js</span><span class="stack-tag">Supabase</span><span class="stack-tag">Integracja CMM</span></div>
       <div class="project-footer"><span class="project-link">Zobacz screeny →</span></div>
     </a>
@@ -581,13 +584,6 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       <p class="project-desc">System zarządzania dla firm z branży laserowej — kalkulator kosztów, cennik z ofertami PDF, sprzedaż, zamówienia, magazyn, biblioteka projektów społeczności. 13 języków, 16 walut z kursami live, Stripe. Globalnie skalowalny.</p>
       <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Supabase</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Stripe</span></div>
       <div class="project-footer"><span class="project-link">Zobacz screeny →</span></div>
-    </a>
-    <a href="/projekty/zagroda.html" class="project-card">
-      <div class="project-tag">Projekt poboczny</div>
-      <div class="project-title">Zagroda</div>
-      <p class="project-desc">Grywalizowana platforma edukacyjna dla klas 1–5. Projekt poboczny — ale techniczny dowód że system wielorolowy z bazą danych i logiką uprawnień można zbudować w pełni serverless, przy zerowym koszcie hostingu.</p>
-      <div class="project-stack"><span class="stack-tag">Cloudflare Workers</span><span class="stack-tag">D1 SQLite</span><span class="stack-tag">JavaScript</span></div>
-      <div class="project-footer"><span class="project-link">Czytaj więcej →</span></div>
     </a>
   </div>
 </section>
@@ -623,8 +619,8 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:2rem 5vw;di
       <div class="form-group">
         <label>Czego dotyczy zapytanie</label>
         <select name="type">
-          <option>System produkcyjny / zarządzanie halą</option>
-          <option>Cyfryzacja procesów biznesowych</option>
+          <option>Platforma MES / system produkcyjny</option>
+          <option>Cyfryzacja procesów hali</option>
           <option>Dedykowana aplikacja webowa</option>
           <option>Strona internetowa</option>
           <option>Kontrakt B2B / współpraca z moim IT</option>
