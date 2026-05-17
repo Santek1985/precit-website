@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrecIT System – Modular Plant Management Platform · PrecIT</title>
+<meta name="description" content="PrecIT System — modular plant management platform for manufacturing plants. 27 stages, multi-tenant, on-premise Windows. Every module activated for the specific plant profile. Built in under a month in an AI-First model."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1014;--bg2:#16181e;--bg3:#1e2028;--line:#2e3240;--text:#e8eaf0;--muted:#7a8099;--accent:#e8a020;--accent2:#f0b840;--white:#fff;--ok:#2a9d5c;--warn:#e67e22;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px;background:rgba(15,16,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:.04em;color:var(--white);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-back:hover{color:var(--accent);}
+.project-hero{padding:120px 5vw 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.2;}
+.hero-glow{position:absolute;top:-100px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(232,160,32,.09) 0%,transparent 70%);pointer-events:none;}
+.project-hero-content{position:relative;max-width:900px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--accent);}
+.breadcrumb span{color:var(--accent);}
+.project-tag{display:inline-block;padding:5px 16px;background:var(--accent);color:var(--bg);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.2rem;font-family:'Barlow Condensed',sans-serif;}
+.project-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(3rem,8vw,5.5rem);line-height:.95;color:var(--white);margin-bottom:.8rem;letter-spacing:-.01em;}
+.hero-headline{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--accent);font-weight:700;line-height:1.2;margin-bottom:1.2rem;}
+.project-hero-sub{font-size:1.05rem;color:var(--muted);max-width:680px;margin-bottom:2rem;line-height:1.75;}
+.project-hero-sub strong{color:var(--text);font-weight:500;}
+.project-meta{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--line);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-size:.7rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.meta-value{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;color:var(--text);}
+.meta-value.accent{color:var(--accent);}
+.project-body{max-width:1180px;margin:0 auto;padding:80px 5vw;}
+.content-layout{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start;}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:8px;margin-top:3.5rem;}
+.section-label:first-of-type{margin-top:0;}
+.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+.section-label.tech{color:var(--text);}
+.section-label.tech::before{background:var(--text);}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:700;color:var(--white);margin-bottom:1.2rem;line-height:1.1;}
+p{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem;line-height:1.78;}
+p strong{color:var(--text);font-weight:500;}
+.highlight-box{background:var(--bg2);border-left:3px solid var(--accent);padding:1.3rem 1.8rem;margin:2rem 0;font-size:.96rem;color:var(--text);line-height:1.75;}
+.highlight-box strong{color:var(--accent);}
+.callout-tech{background:var(--bg2);border:1px solid var(--line);padding:1.5rem 1.8rem;margin:2rem 0;border-radius:2px;}
+.callout-tech p{font-size:.88rem;margin-bottom:.6rem;}
+.callout-tech p:last-child{margin-bottom:0;}
+.tech-divider{background:linear-gradient(to right,transparent,var(--line),transparent);height:1px;margin:5rem 0 3rem;position:relative;}
+.tech-divider::after{content:'DLA TWOJEGO IT';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 1.5rem;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;}
+.features-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin:1.5rem 0;}
+.features-list li{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;color:var(--muted);line-height:1.65;}
+.features-list li::before{content:'▸';color:var(--accent);font-size:.8rem;margin-top:5px;flex-shrink:0;}
+.features-list li strong{color:var(--text);font-weight:500;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:2rem 0;}
+.stat-box{background:var(--bg2);border:1px solid var(--line);padding:1.3rem;}
+.stat-box-num{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.3rem;}
+.stat-box-label{font-size:.75rem;color:var(--muted);letter-spacing:.06em;line-height:1.4;}
+.architecture-diagram{background:var(--bg2);border:1px solid var(--line);padding:2rem;margin:2rem 0;font-family:'Barlow Condensed',sans-serif;}
+.arch-layer{padding:1.2rem 1.5rem;margin-bottom:.6rem;border-left:3px solid var(--line);background:var(--bg3);transition:border-color .2s;}
+.arch-layer:hover{border-left-color:var(--accent);}
+.arch-layer.modules{border-left-color:var(--accent);}
+.arch-layer.shared{border-left-color:#4ecdc4;}
+.arch-layer.core{border-left-color:var(--warn);}
+.arch-layer.data{border-left-color:var(--muted);}
+.arch-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);letter-spacing:.06em;margin-bottom:.4rem;text-transform:uppercase;}
+.arch-desc{font-family:'Barlow',sans-serif;font-size:.85rem;color:var(--muted);line-height:1.6;font-weight:300;}
+.arch-arrow{text-align:center;color:var(--line);font-size:1.2rem;line-height:1;margin:.2rem 0;}
+.stages-list{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;margin:1.5rem 0;font-size:.88rem;}
+.stage-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--accent);text-align:right;padding-top:.3rem;}
+.stage-desc{padding:.3rem 0;border-bottom:1px solid var(--line);color:var(--muted);line-height:1.55;}
+.stage-desc strong{color:var(--text);font-weight:500;}
+.stage-status{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:1px 8px;margin-left:.6rem;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;}
+.stage-status.done{background:rgba(42,157,92,.15);color:var(--ok);}
+.stage-status.wip{background:rgba(230,126,34,.15);color:var(--warn);}
+.screenshot-frame{background:var(--bg2);border:1px solid var(--line);margin:2rem 0;overflow:hidden;}
+.screen-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--line);}
+.screenshot-frame img{width:100%;display:block;filter:brightness(.93) contrast(1.04);}
+.screen-caption{font-size:.75rem;color:var(--muted);padding:.6rem 1.2rem;background:var(--bg3);border-top:1px solid var(--line);letter-spacing:.04em;line-height:1.55;}
+.screen-placeholder{background:repeating-linear-gradient(45deg,var(--bg2),var(--bg2) 10px,var(--bg3) 10px,var(--bg3) 20px);min-height:280px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;letter-spacing:.06em;}
+.sidebar{position:sticky;top:90px;}
+.sidebar-card{background:var(--bg2);border:1px solid var(--line);padding:1.8rem;margin-bottom:1.2rem;}
+.sidebar-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1.1rem;letter-spacing:.04em;}
+.tech-tag{display:inline-block;padding:4px 11px;border:1px solid var(--line);font-size:.73rem;color:var(--muted);letter-spacing:.04em;margin:3px 3px 3px 0;font-family:'Barlow',sans-serif;}
+.status-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;}
+.status-active{background:rgba(232,160,32,.12);color:var(--accent);border:1px solid rgba(232,160,32,.35);}
+.status-active::before{content:'';display:block;width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.sidebar-fact{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.83rem;}
+.sidebar-fact:last-child{border-bottom:none;padding-bottom:0;}
+.fact-label{color:var(--muted);}
+.fact-value{color:var(--text);font-weight:500;text-align:right;}
+.btn-primary{display:block;padding:13px 28px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));text-align:center;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-outline{display:block;padding:11px 26px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.83rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;margin-top:.7rem;text-align:center;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.8rem;color:var(--muted);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.project-hero-content>*{animation:fadeUp .6s ease forwards;opacity:0;}
+.breadcrumb{animation-delay:.05s;}.project-tag{animation-delay:.15s;}.project-hero h1{animation-delay:.25s;}.hero-headline{animation-delay:.32s;}.project-hero-sub{animation-delay:.4s;}.project-meta{animation-delay:.5s;}
+@media(max-width:900px){
+  .content-layout{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .stages-list{grid-template-columns:1fr;gap:0;}
+  .stage-num{text-align:left;padding-top:.6rem;font-size:.78rem;}
+  .stage-desc{padding-top:0;padding-bottom:.6rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/en/" class="logo">Prec<span>IT</span></a>
+  <a href="/projekty/precit-system.html" class="nav-back">← Polska wersja</a>
+</nav>
+
+<div class="project-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="project-hero-content">
+    <div class="breadcrumb"><a href="/en/">PrecIT</a> / <a href="/en/#portfolio">Portfolio</a> / <span>PrecIT System</span></div>
+    <div class="project-tag">Platform — demonstrator</div>
+    <h1>PrecIT System</h1>
+    <p class="hero-headline">Modular plant management platform — not just MES.</p>
+    <p class="project-hero-sub">A demonstrator of the full range of capabilities of the PrecIT platform. <strong>Not just an MES system</strong> — a modular platform that brings together production operations, traceability, quality, planning, maintenance, HR, safety, and controlling areas into <strong>one coherent, intuitive system</strong>. It understands not only the shop floor — but also the dependencies between the floor, HR, maintenance, safety and the other departments of a plant that, in a typical company, operate in separate systems that don't cooperate well with each other.</p>
+    <div class="project-meta">
+      <div class="meta-item"><div class="meta-label">Status</div><div class="meta-value accent">In active development</div></div>
+      <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Modular plant management platform</div></div>
+      <div class="meta-item"><div class="meta-label">Architecture</div><div class="meta-value">Multi-tenant · On-premise</div></div>
+      <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">Node.js / React / PostgreSQL 18</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="project-body">
+  <div class="content-layout">
+    <div class="main-content">
+
+      <div class="section-label">Where it came from</div>
+      <h2>The trap of the commercial MES market</h2>
+      <p>A typical production plant runs several, sometimes a dozen or so smaller systems. Each one with a separate license (and far from cheap), each from a different vendor, none of them talking directly to the others — or doing it very poorly. One system plans, another reports, a third watches the warehouse, a fourth handles schedules — and the operator still has to copy data between them by hand. Every change to any of those systems requires a request, a project plan, and a quote. The vendor needs time to evaluate and decide — which takes months, sometimes years.</p>
+      <p>At some point the client loses patience and starts looking around for a new, better system. But that's where the second problem begins: <strong>every next system bought off the shelf again doesn't match the company profile.</strong> Again the vendor's consultants say "this is the market standard, you have to adapt." Again, after a year, it turns out the operator is bypassing the system, management doesn't trust the reports, and every change still requires a request. Back to square one — with higher license costs and the same problem on the shop floor.</p>
+      <p>The main reason for that trap is simple: <strong>the people who design those systems don't understand production from the inside.</strong> They may have been on a shop floor at some point, may have had briefings from managers and engineers, may have read a hundred industry reports — but that's not the same as working for years at a machine and being responsible for the shift's result. Only from that level can you see where the office-based designer puts a form instead of a prompt, where a procedure leaves the operator alone at the moment of decision, and where the management report reflects an idea instead of the reality on the floor.</p>
+      <div class="highlight-box">
+        <strong>Monitor System</strong> was an earlier exercise and a workflow concept showcase — a working demonstrator that earned strong endorsement from operators and management. <strong>PrecIT System</strong> is the platform that grew out of that foundation and went further: full modularity, multi-tenant, on-premise, offline licensing, and a layered architecture that lets each client's scope be tailored individually.
+      </div>
+
+      <div class="section-label">Philosophy</div>
+      <h2>The shop floor can only be learned by working on it</h2>
+      <p>My edge isn't technology. There's no shortage of technology today. My edge is that <strong>I spent seven years on the production floor — first as an operator, then as a foreman responsible for an entire department.</strong> I know exactly the moment in a shift when an operator starts looking for ways to simplify their work. I know which field on the shift report nobody fills in honestly. I know what shift handover looks like when the next group is about to walk onto the floor and something from the previous shift hasn't been finished.</p>
+      <p>That knowledge lets me diagnose a shop floor quickly. <strong>In a few days of conversations and observation, I can point out the specific places where the current system leaves the operator without help and the management without reliable data.</strong> That then translates directly into PrecIT's configuration — from the company profile, through the structure of departments and lines, shift and brigade definitions, technological routings and identification cards, all the way to the operator's workflow at the machine and what the foreman, planner and executives actually need.</p>
+      <p>My way of working always involves a direct presence on the client's shop floor. I don't work solely from a production manager's briefing or from process documentation. <strong>I go onto the floor, I talk with operators at the machines, I observe the workflow during a shift.</strong> Otherwise the system will technically work — but it won't fit how people actually work. And then the operator will find a way to do things their own way anyway, and the system will become yet another headache.</p>
+
+      <div class="section-label">How it's built</div>
+      <h2>A symbiosis of shop-floor knowledge and cutting-edge technology</h2>
+      <p>PrecIT System — the entire backend across 27 stages, the database with the scale of a real enterprise-class plant, the frontend of flagship modules — <strong>was built in under a month.</strong> That's not a joke and not shorthand. That's how long it took to build what's now visible in the test environment, including 36 database migrations, 135 permissions across 35 roles, 1997 synthetic employees and close to 200 thousand shift-schedule entries.</p>
+      <p>The secret to that speed is <strong>cutting-edge technology and modern hardware</strong>. <strong>I design the whole system — operator workflow, module structure, permission model, organizational hierarchy, routings, identification card format, interface look, architectural decisions.</strong> All of that comes directly from my knowledge of how a real shop floor works and what the successive roles in a plant need. <strong>Cutting-edge technology generates the code</strong> based on my precise specifications. I verify every function, every module, every line of code — for consistency with production realities and with the architecture I designed.</p>
+      <p>This isn't a single person writing every line of code for a year. It also isn't a 20-developer team led by an MES consultant on the standard 18-month rollout schedule. <strong>It's one engineer with deep production knowledge using the most modern tools and hardware available — which shortens implementation time from months to days, while keeping full control over the architecture and quality.</strong> That combination isn't yet on the market as a standard offering.</p>
+      <p>The impact on the client is immediate. <strong>The first modules are working at your site in weeks, not months. Changes and adjustments land in the system in days, not month-long projects priced by the vendor.</strong></p>
+
+      <div class="section-label">What sets PrecIT System apart</div>
+      <h2>Adapts to the plant — not the other way around</h2>
+      <p>The most important principle of PrecIT's philosophy is: <strong>the system adapts to the plant, not the plant to the system.</strong> Sounds trivial, but in commercial MES systems you practically never see it. Everything that sets PrecIT apart from the competition comes from that one rule.</p>
+      <ul class="features-list">
+        <li><strong>Modularity tailored to your needs</strong> — every module (Foreman, Process, Operator, Planner, Quality, Maintenance, HR, Safety, Notifications and others) is <strong>tailored to the specific client</strong> — only the functions they actually use, in a layout and workflow consistent with the plant's reality. The rest comes later without rebuilding.</li>
+        <li><strong>Configurability without programming</strong> — structure of departments, lines, machines and roles; shift and brigade definitions; technological routings and alternative operation locations; batch number format (a configurable string of department code, date, shift and sequence); identification card layout (A5 standard, A6 compact, 100×70 mm label); custom card fields; quality control schedules — all of it set by the client's admin in the panel, without writing a line of code and without contacting the vendor.</li>
+        <li><strong>Multi-tenant ready</strong> — one server instance handles multiple plants. <code>tenant_id</code> is present on every table except technical and live data. For holdings with several plants — one platform, separated data, shared executive reports.</li>
+        <li><strong>On-premise Windows deployment</strong> — rolled out locally according to the client's IT department guidelines. No forced cloud, no telemetry to the vendor. Production data never leaves the client's infrastructure.</li>
+        <li><strong>Open standards</strong> — Node.js, Express, React, PostgreSQL, WebSockets, Zod. Any senior developer can take this over and develop it further. <strong>With the purchase of full intellectual property the client receives the complete source code</strong> along with documentation and know-how transfer — in a form agreed with the client's IT department. Zero vendor lock-in, zero closed format.</li>
+      </ul>
+
+      <div class="section-label">Process module</div>
+      <h2>Heart of the system — full part traceability</h2>
+      <p>Most production plants today have some kind of part-counting system. <strong>Very few of them have real traceability of the part</strong> from raw material to customer shipment.</p>
+      <p>The Process module is the core of the PrecIT platform — <strong>the deepest and most extensive component of the system</strong>. The whole adaptation philosophy is realized inside it: <strong>every element of the traceability process is configured for the specific client plant</strong> — from the data structure to the way it's displayed, from validation rules to the look of printed documents accompanying the batch. The operator gets a workflow that guides them through successive production steps, and management gets the full history of every produced piece, available in seconds for audit or claim purposes.</p>
+      <p>The specific scope of the Process module — from execution recording, through technological routings, batch identification, BOM handling, all the way to full genealogy and claim handling — is always discussed individually for your production processes.</p>
+
+      <div class="section-label">Test environment</div>
+      <h2>The scale of a real enterprise-class plant</h2>
+      <p>PrecIT System isn't tested on 10 records in the database or on three demo machines. <strong>The test environment reflects the scale of a real enterprise-class plant</strong> — with two production plants, nineteen departments, hundreds of lines and thousands of machines. This makes it possible to verify the system's behavior under real load already at the development stage. All data is synthetic, generated by test seeds — but its structure, volume and relationships match what you find in a real plant.</p>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-box-num">2</div><div class="stat-box-label">Production plants (Z1, Z2)</div></div>
+        <div class="stat-box"><div class="stat-box-num">18</div><div class="stat-box-label">Departments (9 per plant)</div></div>
+        <div class="stat-box"><div class="stat-box-num">~170</div><div class="stat-box-label">Production lines</div></div>
+        <div class="stat-box"><div class="stat-box-num">~1,726</div><div class="stat-box-label">Technological machines</div></div>
+        <div class="stat-box"><div class="stat-box-num">1,997</div><div class="stat-box-label">Employees with hierarchy</div></div>
+        <div class="stat-box"><div class="stat-box-num">108</div><div class="stat-box-label">Brigades (Z1: 3×9, Z2: 4×9)</div></div>
+        <div class="stat-box"><div class="stat-box-num">18,474</div><div class="stat-box-label">Brigade schedule entries / year</div></div>
+        <div class="stat-box"><div class="stat-box-num">191,826</div><div class="stat-box-label">Shift schedule entries</div></div>
+        <div class="stat-box"><div class="stat-box-num">6,847</div><div class="stat-box-label">Operator qualifications</div></div>
+        <div class="stat-box"><div class="stat-box-num">135</div><div class="stat-box-label">Permissions across 35 roles</div></div>
+        <div class="stat-box"><div class="stat-box-num">36</div><div class="stat-box-label">Database migrations</div></div>
+        <div class="stat-box"><div class="stat-box-num">27</div><div class="stat-box-label">Backend stages</div></div>
+      </div>
+      <p>The current state of the platform was built in under a month — with direct involvement of a person who managed a department, a shop floor, a team and production data over years of work in a real plant. <strong>Every module, every permission, every column in the database and every view in the interface was verified against how a production floor actually works.</strong> There's no function in PrecIT taken from a requirements list — everything has its source in a specific observation from the shop floor.</p>
+
+      <div class="section-label">Screenshots</div>
+      <h2>The system in the demo environment</h2>
+      <p>The screens below come from the current test environment — they show login, the module launcher, the most important views of the Foreman module, Administration, Planner, and the notification system. The environment runs at the full scale of a real enterprise-class plant.</p>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Login and module launcher</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Login screen</div>
+        <img src="/images/precit-login-pl.png" alt="PrecIT — login screen with email and password fields" loading="lazy">
+        <div class="screen-caption">A minimalist login screen — email address and password. Version v1.0.0 is visible in the footer. The visual identity is adjusted to the client's branding.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Launcher — main administrator view</div>
+        <img src="/images/precit-launcher-admin-pl.png" alt="PrecIT launcher — 17 module tiles available in the demo environment" loading="lazy">
+        <div class="screen-caption">The main view after login — tiles of all active modules. An administrator sees the full scope (17 modules); a lower-level user only sees what they have permission for. The top navigation bar repeats the modules for quick access, with a notification bell counter showing the number of active alerts, and a PL/EN switch.</div>
+      </div>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Foreman module — production management</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Foreman dashboard — production line list</div>
+        <img src="/images/precit-lider-linie-pl.png" alt="Foreman dashboard — 212 active shifts, line list with KPIs" loading="lazy">
+        <div class="screen-caption">Dashboard with KPIs: active shifts, plan completion, average OEE, total downtime. A table of lines with status (Running), shift (Open), production counter (done/plan), OEE, downtime, defects, and assigned foreman. Filters, sorting by any column, line search.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Schedule — selecting a brigade to view</div>
+        <img src="/images/precit-grafik-wybor-pl.png" alt="Selecting a brigade to view the monthly schedule" loading="lazy">
+        <div class="screen-caption">A list of all brigades grouped per plant and department. Each brigade with the headcount. Clicking selects a specific brigade to view the monthly schedule — with the distribution of shifts, vacations, training and periodic medical exams.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Employee evaluation — 8 evaluation criteria</div>
+        <img src="/images/precit-oceny-modal-pl.png" alt="Employee evaluation modal with 8 criteria across 3 categories" loading="lazy">
+        <div class="screen-caption">Employee evaluation modal for the current month. 8 criteria grouped into 3 categories (Work: quality, performance; Safety: workplace safety; Behavior: discipline, engagement, extras). A 1–5 scale for each criterion, automatic average calculation. Free-text comment to the evaluation.</div>
+      </div>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Administration module — plant structure</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Departments — full organizational structure listing</div>
+        <img src="/images/precit-admin-wydzialy-pl.png" alt="Department listing with plant → department hierarchy" loading="lazy">
+        <div class="screen-caption">The full list of departments and plants. Every department linked to a parent plant, with display order configurable per plant. Filters by type (Plant/Department), search. Inline edit and delete. Sorting by any column.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Departments — editing a department</div>
+        <img src="/images/precit-admin-wydzial-edycja-pl.png" alt="Department edit modal with shift system configuration" loading="lazy">
+        <div class="screen-caption">Department configuration — code, name in PL and EN, type (Department/Plant), parent department, order, shift system (4 brigades continuous 7-day, 3 brigades weekday, etc.), number of brigades, minimum staffing. All of it set by the client's admin, without contacting the vendor.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Production lines — editing a line</div>
+        <img src="/images/precit-admin-linia-edycja-pl.png" alt="Production line edit modal with target and staffing" loading="lazy">
+        <div class="screen-caption">Production line configuration — code, name, parent department, production target, unit (pcs/h), display order, shift system (can override the department settings or inherit them), minimum and optimal operator staffing.</div>
+      </div>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Employee management — full profile in a single view</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Employee — basic information</div>
+        <img src="/images/precit-pracownik-info-pl.png" alt="Employee modal - Information tab" loading="lazy">
+        <div class="screen-caption">Employee card with three tabs. The "Information" tab — email, position, department, brigade, employment type, hire date. Employee PIN (for logging in at the operator terminal) with view and regenerate functions. Supervisors — direct team leader and production manager (formal). Actions: transfer employee, view schedule.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Employee — qualifications and production permissions</div>
+        <img src="/images/precit-pracownik-kwalifikacje-pl.png" alt="Employee modal - Qualifications tab with machine list and dates" loading="lazy">
+        <div class="screen-caption">A list of lines and machines the employee has production permissions for. Every qualification with a level (Basic/Intermediate/Advanced), date acquired and expiry date. Adding new qualifications, removing expired ones. Linked to the Notifications module — alerts about expiring permissions reach the team leader in advance.</div>
+      </div>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Employee — integration with external systems</div>
+        <img src="/images/precit-pracownik-id-pl.png" alt="Employee modal - External ID tab with integration fields" loading="lazy">
+        <div class="screen-caption">The "External ID" tab — integration with the client's existing HR systems (Teta ME, SAP HR, custom). A field for the ID/login in the external system and the system name. Optional field — lets you map employees from PrecIT to records in another system without giving up the existing HR infrastructure.</div>
+      </div>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Planner module — Gantt and new shift plans</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Production planning — Gantt view with new plan modal</div>
+        <img src="/images/precit-planista-gantt-pl.png" alt="Gantt view of shift planning with new plan modal" loading="lazy">
+        <div class="screen-caption">Daily Gantt view of the shift plan — each production line in a separate row, days of the week as columns, planned shifts in between color-coded by status (Planned/Active/Completed/Cancelled). New plan modal — selecting the part from the routing, the shift (morning/afternoon/night), planned quantity, priority, notes. Linked to available resources — missing raw material, missing operator — and the system signals it.</div>
+      </div>
+
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);margin:2.5rem 0 1rem;letter-spacing:.02em;">Notification system — alerts before they become problems</h3>
+
+      <div class="screenshot-frame">
+        <div class="screen-label">Notifications — dropdown from the bell in AppHeader</div>
+        <img src="/images/precit-powiadomienia-pl.png" alt="Notifications dropdown with 199 active alerts" loading="lazy">
+        <div class="screen-caption">Notifications dropdown opened from the bell in the header. Each notification with a category (Warning/Information/Alarm), event description, event time, and a "Go to" action for details. Notifications are generated automatically every 5 minutes: expiring qualifications, medical exams, pending vacation requests, open line breakdowns. Auto-resolve when the issue disappears from the database state.</div>
+      </div>
+
+      <div class="tech-divider"></div>
+
+      <div class="section-label tech">System architecture</div>
+      <h2>Four layers with clearly separated responsibilities</h2>
+      <p>PrecIT System is built in a layered architecture in which each layer has a clearly defined responsibility and import rules. This separation isn't just a convention — it's <strong>enforced by the structure of the code</strong>, which means a change in one module cannot cause a regression in another. That's a rarity in commercial MES, where often one badly designed change is enough to break two other modules.</p>
+      <div class="architecture-diagram">
+        <div class="arch-layer modules">
+          <div class="arch-name">Modules — functional modules</div>
+          <div class="arch-desc">Foreman · Process · Operator · Planner · Quality · Maintenance · HR · Safety · Notifications · Procurement · Warehouse · Executive · Reports · TV Monitor · Costing · APS · IT. Every module registers its own endpoints and views, and every one can be disabled in <code>config.json</code>. Communication between modules happens exclusively through the event bus.</div>
+        </div>
+        <div class="arch-arrow">↓ imports</div>
+        <div class="arch-layer shared">
+          <div class="arch-name">Shared — reusable domain components</div>
+          <div class="arch-desc">EmployeeModal, PartModal, LineModal, MachineModal, services for fetching employees and part passports. They operate on entities shared by multiple modules. They adapt automatically to the active modules — turn Quality off and the "Quality" tab disappears from the employee modal, while the system keeps working.</div>
+        </div>
+        <div class="arch-arrow">↓ imports</div>
+        <div class="arch-layer core">
+          <div class="arch-name">Core — domain-neutral infrastructure</div>
+          <div class="arch-desc">Auth, JWT, sessions, license validation, configuration, event bus, API client, PL/EN internationalization, UI widgets (Button, Modal, Toast, Table). Core knows nothing about an employee, a line, or a brigade — it's the domain-neutral foundation.</div>
+        </div>
+        <div class="arch-arrow">↓ reads</div>
+        <div class="arch-layer data">
+          <div class="arch-name">Data — PostgreSQL schemas</div>
+          <div class="arch-desc">core.* (users, roles, sessions, permissions) · technical.* (lines, machines, departments, parts) · hr.* (employees, brigades, schedules, qualifications, medical exams, training) · live.* (notifications, production events) · traceability.* (batches, routings, BOM, cards). The foundation of the system — always present, never disabled.</div>
+        </div>
+      </div>
+      <p>The practical consequence of this architecture: <strong>a client disabling a module doesn't cause the system to crash.</strong> Functions disappear cleanly — tabs, sections, menu options simply don't render. Enable the module later — the functions come back as if they had never been off. I call this behavior graceful degradation, and it's built into the architecture, not bolted on as a workaround.</p>
+
+      <div class="section-label tech">Technology stack</div>
+      <h2>Technical decisions — no compromises for fashion</h2>
+      <p>Technology choices in PrecIT come from concrete deployment needs. Nothing in here is added "because it's trendy" — every element has a justification on the operational side of the client and their IT department.</p>
+      <div class="callout-tech">
+        <p><strong style="color:var(--accent);">Backend:</strong> Node.js + Express + Knex.js (query builder) + PostgreSQL 18. JWT for authentication, Winston as the logger, Bull as the job queue, Zod for input validation.</p>
+        <p><strong style="color:var(--accent);">Realtime:</strong> WebSockets (ws) with broadcasting of production events. An in-memory state layer with the option to plug in Redis as a drop-in replacement.</p>
+        <p><strong style="color:var(--accent);">Frontend:</strong> React 18 with Babel standalone — no bundler, no webpack, no configuration. The client's IT engineer can open a JSX file, fix a line and refresh the browser. No toolchain complexity, no compiler to maintain.</p>
+        <p><strong style="color:var(--accent);">Deployment:</strong> Windows on-premise, in line with the client's IT department guidelines. PostgreSQL local. No forced cloud, no dependency on external services, no telemetry.</p>
+        <p><strong style="color:var(--accent);">Security:</strong> 135 permissions across 35 roles, dynamically modifiable in the database. <code>tenant_id</code> on every table apart from technical and live data. Detailed conditions, including licensing, agreed individually with each client.</p>
+      </div>
+
+      <div class="section-label tech">Full list of 27 stages</div>
+      <h2>Backend development roadmap</h2>
+      <p>PrecIT System has a written plan covering 27 backend stages plus the frontend and shared component layers. Below is the full map — most stages are already complete (status "done"), some are in active development (status "in progress"). The frontend of flagship modules — Foreman, Administration, Process (MVP), Planner, Notifications — is also available in the test environment. The remaining module interfaces are designed and being rolled out in stages.</p>
+      <div class="stages-list">
+        <div class="stage-num">01</div><div class="stage-desc"><strong>Core skeleton</strong> — system scaffolding, bootstrap, directory structure conventions, middleware baseline <span class="stage-status done">done</span></div>
+        <div class="stage-num">02</div><div class="stage-desc"><strong>Module loader</strong> — dynamic loading of modules from <code>config.json</code>, endpoint registration <span class="stage-status done">done</span></div>
+        <div class="stage-num">03</div><div class="stage-desc"><strong>Core API</strong> — users, roles, departments, infrastructure, basic CRUD endpoints <span class="stage-status done">done</span></div>
+        <div class="stage-num">04</div><div class="stage-desc"><strong>Database environment and test seeds</strong> — PostgreSQL server configuration, database schemas, <code>tenant_id</code> structure, test data generator reflecting the scale of a real plant <span class="stage-status done">done</span></div>
+        <div class="stage-num">05</div><div class="stage-desc"><strong>Frontend shell</strong> — Login, Launcher, AppHeader, design system, base widgets <span class="stage-status done">done</span></div>
+        <div class="stage-num">06</div><div class="stage-desc"><strong>Skeleton verification</strong> — architecture base tests, module integration <span class="stage-status done">done</span></div>
+        <div class="stage-num">07</div><div class="stage-desc"><strong>Permission model</strong> — <code>requirePermission()</code>, 135 permissions across 35 roles, dynamic in the database <span class="stage-status done">done</span></div>
+        <div class="stage-num">08</div><div class="stage-desc"><strong>Shift schedule</strong> — shift definitions, cron job opening shifts automatically <span class="stage-status done">done</span></div>
+        <div class="stage-num">09</div><div class="stage-desc"><strong>Part registry</strong> — product types, technological routings, steps and alternatives <span class="stage-status done">done</span></div>
+        <div class="stage-num">10</div><div class="stage-desc"><strong>Traceability engine</strong> — batches, events, scans, QR code generation, genealogy <span class="stage-status done">done</span></div>
+        <div class="stage-num">11</div><div class="stage-desc"><strong>NCR quality engine</strong> — non-conforming reports, quality blocks, inspection schedules <span class="stage-status done">done</span></div>
+        <div class="stage-num">12</div><div class="stage-desc"><strong>Operator</strong> — guided workflow at the machine, card scanning, execution recording <span class="stage-status done">done</span></div>
+        <div class="stage-num">13</div><div class="stage-desc"><strong>Foreman</strong> — full dashboard, KPIs, shifts, events, monthly schedule, employee evaluations (8 criteria), qualifications, categorized notes, vacations, replacements <span class="stage-status done">done</span></div>
+        <div class="stage-num">14</div><div class="stage-desc"><strong>Planner</strong> — production plans, work orders, Gantt, operation scheduling <span class="stage-status done">done</span></div>
+        <div class="stage-num">15</div><div class="stage-desc"><strong>Quality — extensions</strong> — escalations, reports, line blocks on deviations <span class="stage-status done">done</span></div>
+        <div class="stage-num">16</div><div class="stage-desc"><strong>HR</strong> — full employee management, brigades, qualifications, medical exams, training, evaluations, absences, business trips, organizational hierarchy <span class="stage-status done">done</span></div>
+        <div class="stage-num">17</div><div class="stage-desc"><strong>Maintenance</strong> — failures, escalations, MTBF/MTTR, inspection schedules, intervention history per machine <span class="stage-status done">done</span></div>
+        <div class="stage-num">18</div><div class="stage-desc"><strong>Safety / Fire safety</strong> — workstation reviews, periodic training, incidents, fire safety audits, full permissions design <span class="stage-status wip">in progress</span></div>
+        <div class="stage-num">19</div><div class="stage-desc"><strong>Procurement</strong> — requirements, orders, suppliers, goods receipt inspection <span class="stage-status done">done</span></div>
+        <div class="stage-num">20</div><div class="stage-desc"><strong>Warehouse</strong> — stock levels, movements, locations, low-stock alerts <span class="stage-status done">done</span></div>
+        <div class="stage-num">21</div><div class="stage-desc"><strong>Executive (360° dashboard)</strong> — cross-cutting KPIs from all modules for the board <span class="stage-status done">done</span></div>
+        <div class="stage-num">22</div><div class="stage-desc"><strong>Reports</strong> — report engine with definition builder, export to Excel and PDF <span class="stage-status done">done</span></div>
+        <div class="stage-num">23</div><div class="stage-desc"><strong>TV Monitor (Andon board)</strong> — full-screen shop-floor kiosk with current line data <span class="stage-status done">done</span></div>
+        <div class="stage-num">24</div><div class="stage-desc"><strong>Costing engine</strong> — calculation engine for operation, material and maintenance costs <span class="stage-status done">done</span></div>
+        <div class="stage-num">25</div><div class="stage-desc"><strong>APS</strong> — advanced scheduling using the costing engine and resource constraints <span class="stage-status done">done</span></div>
+        <div class="stage-num">26</div><div class="stage-desc"><strong>IT / Helpdesk</strong> — internal ticket system, infrastructure, knowledge base <span class="stage-status done">done</span></div>
+        <div class="stage-num">27</div><div class="stage-desc"><strong>Icons and final verification</strong> — duotone icon system, UI verification, end-to-end tests <span class="stage-status done">done</span></div>
+      </div>
+      <p style="margin-top:1.5rem;">In addition to the numbered stages: the <strong>Notifications module</strong> (live.notifications, alert generator every 5 minutes, automatic detection of expiring qualifications, medical exams, pending vacation requests and open breakdowns — with a bell in the AppHeader and auto-resolve), and the <strong>Shared layer</strong> (reusable domain components: EmployeeModal, PartModal, LineModal, MachineModal — adapting to the active modules).</p>
+
+      <div class="section-label tech">Security and deployment</div>
+      <h2>Your infrastructure, your data, your ownership</h2>
+      <p>Production data is one of the most valuable assets of a plant. PrecIT System was designed so that this data <strong>never leaves the client's infrastructure</strong>. There's no forced cloud, no telemetry to the vendor. The system runs locally, on the client's servers, under the client's control — in line with the IT department's guidelines.</p>
+      <ul class="features-list">
+        <li><strong>On-premise Windows deployment</strong> — installation on the client's servers, in line with the IT department's guidelines. Local PostgreSQL 18. Production data stays in the client's infrastructure.</li>
+        <li><strong>Granular permission model</strong> — 135 permissions across 35 roles. Each role dynamically modifiable in the database. The operator sees their workstation and their shift. The team leader sees their brigade. Management sees their departments. The board sees the whole picture. Admin = superset of all modules with additional management features (employee transfers, change audits, dictionary editing).</li>
+        <li><strong>Multi-tenant via tenant_id</strong> — every table with business data has a column identifying the plant. A single server instance can serve several plants of a holding — data separated, executive reports shared.</li>
+        <li><strong>Change audit</strong> — every modification of key entities is logged with user ID, timestamp, and state before and after the change. Available to the administrator in the panel, and to the board in the Executive module.</li>
+        <li><strong>Open source code</strong> — with a one-time IP purchase the client receives the complete source code, full technical documentation, and a description of the architecture and deployment procedures — in a form agreed with the client's IT department. Your IT team continues to develop the system independently — zero vendor lock-in.</li>
+        <li><strong>NDA compliance</strong> — before every first conversation about processes and data we sign a confidentiality agreement. Your procedures and internal data don't leave this engagement.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>PrecIT System founding quote:</strong> „The system adapts to the plant — not the plant to the system. Every client configures their own routing, their own card format, their own flow rules. Every activated module — runs for a specific company, not for a list of features from a brochure."
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <h3>Project status</h3>
+        <div class="status-badge status-active">In active development</div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:1rem;line-height:1.6;margin-bottom:0;">Test environment ready — 27 backend stages implemented in under a month in an AI-First model. Stage 18 (Safety/Fire safety) in active development. The frontend of flagship modules is available. Ready for presentations to prospective clients.</p>
+      </div>
+      <div class="sidebar-card">
+        <h3>Technology stack</h3>
+        <div>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Express</span>
+          <span class="tech-tag">Knex</span>
+          <span class="tech-tag">PostgreSQL 18</span>
+          <span class="tech-tag">React 18</span>
+          <span class="tech-tag">Babel standalone</span>
+          <span class="tech-tag">WebSockets</span>
+          <span class="tech-tag">Zod</span>
+          <span class="tech-tag">JWT</span>
+          <span class="tech-tag">Winston</span>
+          <span class="tech-tag">Bull</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:1rem;line-height:1.55;margin-bottom:0;">Open standards. Any senior developer can take this over and develop it further without trouble.</p>
+      </div>
+      <div class="sidebar-card">
+        <h3>Details</h3>
+        <div class="sidebar-fact"><span class="fact-label">Type</span><span class="fact-value">Modular plant management platform</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Architecture</span><span class="fact-value">4-layer · multi-tenant</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Deployment</span><span class="fact-value">On-premise Windows</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Backend stages</span><span class="fact-value">26/27 done · 1 in progress</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Number of modules</span><span class="fact-value">17 functional + shared</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Permissions</span><span class="fact-value">135 across 35 roles</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Demo scale</span><span class="fact-value">1997 empl. · 1726 machines</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Interface language</span><span class="fact-value">PL / EN</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Build time</span><span class="fact-value">Under a month</span></div>
+        <div class="sidebar-fact"><span class="fact-label">Working model</span><span class="fact-value">AI-First Development</span></div>
+      </div>
+      <div class="sidebar-card">
+        <h3>This system for your plant?</h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.6;">Every plant has different processes, rhythms and requirements. I always start with time spent on your shop floor — before writing a single line of code. I build only what you actually need. The first conversation is free, no obligations, with an NDA signed before any conversation about processes.</p>
+        <a href="/en/#contact" class="btn-primary">Let's talk</a>
+        <a href="/en/#pricing" class="btn-outline">Engagement models</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/en/" class="logo">Prec<span>IT</span></a>
+  <p class="footer-copy">© 2026 PrecIT · Daniel Gołąbek · Precision IT. Production Roots.</p>
+</footer>
+</body>
+</html>
